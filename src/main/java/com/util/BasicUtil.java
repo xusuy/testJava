@@ -1,0 +1,42 @@
+package com.util;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * @author xsy
+ * @create 2018-12-06 15:52
+ * @desc
+ **/
+public class BasicUtil {
+
+    @Test
+    public void testNumber() {
+        Double aDouble = Double.valueOf(1) / Double.valueOf(2);
+        Double bDouble = Double.valueOf(1 / 2);
+        System.out.println(aDouble);
+        System.out.println(bDouble);
+        System.out.println(1 / 2);
+        System.out.println(1.0 / 2.0);
+        double c = 0.0;
+        System.out.println(c == 0);
+    }
+
+    @Test
+    public void testOther() {
+        //null强转
+        Object o1 = null;
+        String o2 = (String) o1;
+        System.out.println(o2);
+
+        //
+        StringBuffer sb = new StringBuffer();
+        sb.append("a").append("\\$");
+        System.out.println(sb.toString());
+        String str1 = "1$2";
+        List list1 = Arrays.asList(str1.split("\\$"));
+        list1.forEach(o -> System.out.println(o));
+    }
+}
