@@ -2,11 +2,9 @@ package com.java8.Streams;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author xsy
@@ -22,6 +20,20 @@ public class StreamsTest {
 
     @Test
     public void test() {
+        //长度小于5的字符串个数
+        List<String> list = Arrays.asList("java", "scala", "python", "shell", "ruby");
+        long num = list.parallelStream().filter(x -> x.length() < 5).count();
+        System.out.println(num);
+        //排序
+        Stream<Integer> sortedReverseStreamV2 = Stream.of(1, 3, 7, 4, 5, 8, 6, 2).sorted((Integer o1, Integer o2) -> o2 - o1);
+        sortedReverseStreamV2.collect(Collectors.toList()).forEach(x -> System.out.print(x + " "));
+        System.out.println();
+        //distinct去重
+        Stream<String> distinctStream = Stream.of("bj", "shanghai", "tianjin", "bj", "shanghai").distinct();
+        Stream<String> sortedStream = distinctStream.sorted(Comparator.comparing(String::length));
+        List<String> strList = sortedStream.collect((Collectors.toList()));
+        System.out.println(strList);
+
         // 使用sum()计算相应活动任务的总分
         final long totalPointsOfOpenTasks = tasks
                 .stream()
@@ -56,5 +68,6 @@ public class StreamsTest {
                 .collect(Collectors.toList());                 // List< String >
 
         System.out.println(result);
+
     }
 }

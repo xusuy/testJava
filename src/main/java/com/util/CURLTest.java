@@ -7,11 +7,11 @@ import java.io.InputStreamReader;
 /**
  * @author xsy
  * @create 2019-01-18 14:17
- * @desc java 模拟curl
+ * @desc java 模拟curl：测试无法通过
  **/
 public class CURLTest {
     public static void main(String[] args) {
-        String access_token = "17_yoggylxeLVCKl8CqdqudS6RifF4oPYhBdqG-o8DQkNG7-vxbQBhHLGg9chldOV6GQlEur-OGhzQBg2CEqOfaFYKH-_LLctkYh3COgX9qppQ4oAah6LCbLCv4f9IHfDUrGNcQdWK3ige-IIYbONObAGADCD";
+        String access_token = "18_9yWAFRIkRkE2_oFGB54HfsQPgWowEjJ1Cbn07P0m_NtiPGpaTDmpg8QI-eVOtjckWS5QnJ1DK54UA0j6hSr1OpbRXGnv1xbwym50BGrOlml4hlwwc26XVx85SUXl_XWII-7vGJ6xEtV5Zw8ZLFEdAGATNM";
 //        String []cmds = {"curl", "-i", "-w", "状态%{http_code}；DNS时间%{time_namelookup}；"
 //                + "等待时间%{time_pretransfer}TCP 连接%{time_connect}；发出请求%{time_starttransfer}；"
 //                + "总时间%{time_total}","http://www.baidu.com"};
