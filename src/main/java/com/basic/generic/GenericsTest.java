@@ -21,7 +21,7 @@ public class GenericsTest {
     }
 
     /**
-     * ?是无限定通配符：collection无需关注具体类型，只能调用collection与类型无关的方法
+     * ?是无限定通配符：Collection<?> collection无需关注具体类型，只能调用collection与类型无关的方法
      * <?>被称作无限定的通配符。
      * <? extends T>被称作有上限的通配符。
      * <? super T>被称作有下限的通配符。
@@ -41,6 +41,21 @@ public class GenericsTest {
         List<Object> objectList = new ArrayList<>();
         objectList.add("3");
     }
+
+    public static <E> E test2(E e) {
+        Collection<E> list = new ArrayList<>();
+        list.add(e);
+        System.out.println(list);
+        return e;
+    }
+
+    public static Object test3(Object o) {
+        List<Object> list = new ArrayList<>();
+        list.add(o);
+        System.out.println(list);
+        return o;
+    }
+
 
     /**
      * 接收一个泛型数组，然后创建一个长度与接收的数组长度一样的泛型数组，
@@ -89,6 +104,14 @@ public class GenericsTest {
         if (object instanceof Car) {
             car = (Car) object;
         }
+
+        //List<E>泛形不需要强转
+        String test2 = test2("test2");
+        Integer integer_2 = test2(2);
+
+        //需要强转
+        String test3 = (String) test3("test3");
+        Integer integer_3 = (Integer) test3(3);
     }
 
 }
