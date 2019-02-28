@@ -1,5 +1,7 @@
 package com.basic;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author xsy
  * @create 2017-02-21 15:09
@@ -57,4 +59,10 @@ public class StringTest {
         return null;
     }
 
+    @Test
+    public void test1() {
+        Object o = "123";
+        String s = "123";
+        System.out.println(s.equals(o));
+    }
 }
