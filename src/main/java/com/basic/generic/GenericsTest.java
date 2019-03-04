@@ -1,9 +1,9 @@
 package com.basic.generic;
 
 import com.java8.Car;
-import com.java8.CarTest;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -56,6 +56,55 @@ public class GenericsTest {
         return o;
     }
 
+    @org.junit.jupiter.api.Test
+    public void test4() throws NoSuchFieldException, IllegalAccessException {
+        //只要类没有在代码初始化值，即时用final修饰的字段，都能通过放射改变
+        finalReflectTest1();
+        System.out.println("====");
+        finalReflectTest2();
+        System.out.println("====");
+        finalReflectTest3();
+        System.out.println("====");
+        finalReflectTest4();
+    }
+
+    public void finalReflectTest1() throws NoSuchFieldException, IllegalAccessException {
+        Integer id = new Integer(1);
+        Field int_field = id.getClass().getDeclaredField("value");
+        int_field.setAccessible(true);
+        int_field.setInt(id, 3);
+        System.out.println(id);
+    }
+
+    public void finalReflectTest2() throws NoSuchFieldException, IllegalAccessException {
+        User user = new User(5);
+        System.out.println("反射之前的id=" + user.getId());
+        Field user_field = User.class.getDeclaredField("id");
+        user_field.setAccessible(true);
+        user_field.setInt(user, 6);
+        System.out.println("反射后的field,id=" + user_field.get(user));
+        System.out.println("反射后user,id=" + user.getId());
+    }
+
+    public void finalReflectTest3() throws NoSuchFieldException, IllegalAccessException{
+        User user = new User(5);
+        System.out.println("反射之前的age=" + user.getAge());
+        Field user_field = User.class.getDeclaredField("age");
+        user_field.setAccessible(true);
+        user_field.setInt(user, 6);
+        System.out.println("反射后的field,age=" + user_field.get(user));
+        System.out.println("反射后user,age=" + user.getAge());
+    }
+
+    public void finalReflectTest4() throws NoSuchFieldException, IllegalAccessException{
+        User user = new User(5);
+        System.out.println("反射之前的name=" + user.getName());
+        Field user_field = User.class.getDeclaredField("name");
+        user_field.setAccessible(true);
+        user_field.set(user,"rose");
+        System.out.println("反射后的field,name=" + user_field.get(user));
+        System.out.println("反射后user,name=" + user.getName());
+    }
 
     /**
      * 接收一个泛型数组，然后创建一个长度与接收的数组长度一样的泛型数组，
