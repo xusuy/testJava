@@ -1,8 +1,9 @@
 package com.util;
 
 
-import java.util.Arrays;
-import java.util.List;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 /***
  * 集合
@@ -16,4 +17,25 @@ public class CollectionUtil {
         System.out.println(stringList.get(0));
         System.out.println(stringList.size());
     }
+
+    @Test
+    public void mapEntryTest() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", 123);
+        map.put("name", "jack");
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
+        map.get("id");
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("id", 123);
+        System.out.println(map.equals(map2));
+    }
+
+    @Test
+    public void listTest() {
+        new ArrayList<>().add("2");
+    }
+
 }
