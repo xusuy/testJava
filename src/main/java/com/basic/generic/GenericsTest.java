@@ -12,6 +12,7 @@ import java.util.List;
  * @author xsy
  * @create 2017-02-26 10:04
  * @desc 泛形
+ * https://blog.csdn.net/briblue/article/details/76736356
  **/
 public class GenericsTest {
 
@@ -104,6 +105,20 @@ public class GenericsTest {
         user_field.set(user,"rose");
         System.out.println("反射后的field,name=" + user_field.get(user));
         System.out.println("反射后user,name=" + user.getName());
+    }
+
+    public static void  test5(){
+        List<Integer> li1 = new ArrayList<>();
+        //不能创建具体类型的泛型数组,由于类型擦除
+//        List<Integer>[] li2 = new ArrayList<Integer>[8];
+//        List<Boolean> li3 = new ArrayList<Boolean>[8];
+
+        //可以通过通配符?创建，但是只能读不能写
+        List<?>[] li4 = new ArrayList<?>[8];
+        li4[0] = new ArrayList<>();
+        List<?> v = li4[0];
+        v.get(0);
+//        v.set(3);
     }
 
     /**

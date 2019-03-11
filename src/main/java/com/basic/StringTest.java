@@ -63,6 +63,13 @@ public class StringTest {
     public void test1() {
         Object o = "123";
         String s = "123";
+        Object o2 = s;
+        String s2 = (String) o;
         System.out.println(s.equals(o));
+
+        String s3 = new String("123");
+        System.out.println(s3 == s);
+        System.out.println(s3.intern() == s);
+
     }
 }
