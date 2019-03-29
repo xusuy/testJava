@@ -3,6 +3,11 @@ package com.util;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
 /***
@@ -19,25 +24,27 @@ public class CollectionUtil {
     }
 
     @Test
-    public void mapEntryTest() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", 123);
-        map.put("name", "jack");
-        for (Map.Entry<String, Object> entry : map.entrySet()) {
-            System.out.println(entry.getKey());
-            System.out.println(entry.getValue());
-        }
-        map.get("id");
-        Map<String, Object> map2 = new HashMap<>();
-        map2.put("id", 123);
-        System.out.println(map.equals(map2));
+    public void test1() {
+        List<String> strings = new ArrayList<String>();
+        unsafeAdd1(strings, new Integer(42));
+        String s = strings.get(0);//java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+        System.out.println(s);
     }
 
-    @Test
-    public void listTest() {
-        new ArrayList<>().add("2");
+    public static void unsafeAdd1(List list, Object o) {
+        list.add(o);
     }
 
+    public void test2(){
+        List<String> strings = new ArrayList<String>();
+//        unsafeAdd2(strings, new Integer(42));//编译不通过
+//        String s = strings.get(0);
+//        System.out.println(s);
+    }
+
+    public static void unsafeAdd2(List<Object> list, Object o) {
+        list.add(o);
+    }
     @Test
     public void mapSizeTest() {
         Map<Integer, Integer> map = new HashMap();
