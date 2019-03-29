@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * @author xsy
  * @create 2019-01-17 16:42
- * @desc 替换目录文件夹下的指定内容
+ * @desc 替换目录文件夹下的指定内容（不替换目录文件夹）
  **/
 public class DirectoryFileReplaceContent {
 
@@ -43,8 +43,8 @@ public class DirectoryFileReplaceContent {
             BufferedReader bufReader = new BufferedReader(new InputStreamReader(
                     new FileInputStream(file), "utf-8")); // 数据流读取文件
             StringBuffer strBuffer = new StringBuffer();
-            String oldStr = "package com.xusy.apply";
-            String newStr = "package com.ywsoftware.anxincar";
+            String oldStr = "cn.cloud.ceshi";
+            String newStr = "cn.cloud.xinceshi";
 
             for (String temp; (temp = bufReader.readLine()) != null; ) {
                 if ((temp.indexOf(oldStr) != -1) &&
@@ -53,7 +53,7 @@ public class DirectoryFileReplaceContent {
                 }
 
                 strBuffer.append(temp);
-                strBuffer.append(System.getProperty("line.separator")); // 换行符
+//                strBuffer.append(System.getProperty("line.separator")); // 换行符
             }
 
             bufReader.close();

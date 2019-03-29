@@ -10,7 +10,7 @@ import java.util.List;
  * @create 2018-12-06 15:52
  * @desc
  **/
-public class BasicUtil {
+public class NumberUtil {
 
     @Test
     public void testNumber() {
@@ -22,6 +22,11 @@ public class BasicUtil {
         System.out.println(1.0 / 2.0);
         double c = 0.0;
         System.out.println(c == 0);
+
+        boolean naN = Float.isNaN(0.000000000001f);
+        System.out.println("Float.isNaN：" + naN);
+
+        System.out.println(Integer.MAX_VALUE == (1 << 31) - 1);
     }
 
     @Test

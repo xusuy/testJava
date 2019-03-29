@@ -38,4 +38,13 @@ public class CollectionUtil {
         new ArrayList<>().add("2");
     }
 
+    @Test
+    public void mapSizeTest() {
+        Map<Integer, Integer> map = new HashMap();
+        for (int i = 0; i < 1000000; i++) {
+            map.put(i + 1, 6);
+        }
+        System.out.println(map.size());
+    }
+
 }

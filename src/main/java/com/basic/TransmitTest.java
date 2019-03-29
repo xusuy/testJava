@@ -1,6 +1,10 @@
 package com.basic;
 
 import com.domain.User;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author xsy
@@ -41,4 +45,16 @@ public class TransmitTest {
         user.setUsername("user2");
     }
 
+    @Test
+    public void test1() {
+        Map map = new HashMap();
+        map.put(1, 11);
+        test2(map);
+        System.out.println(map);
+    }
+
+    Map test2(Map map) {
+        map.put(2, 22);
+        return map;
+    }
 }
