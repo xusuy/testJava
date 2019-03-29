@@ -28,4 +28,27 @@ public class Recursion {
     public void test1() {
         System.out.println(fact(5));
     }
+
+    /**
+     * 阶乘——尾递归
+     *
+     * @param n
+     * @param res=1：递归系数
+     * @return
+     */
+    int facttail(int n, int res) {
+        if (n < 0)
+            return 0;
+        else if (n == 0)
+            return 1;
+        else if (n == 1)
+            return res;
+        else
+            return facttail(n - 1, n * res);
+    }
+
+    @Test
+    public void test2() {
+        System.out.println(facttail(5, 1));
+    }
 }
