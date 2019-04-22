@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class JacksonUtilTest {
 
@@ -16,6 +17,9 @@ public class JacksonUtilTest {
         CarInfo carInfo = JacksonUtil.readValue(car_json, CarInfo.class);
         System.out.println("转化为实体bean:\n" + carInfo);
         System.out.println("javabean转化为json:\n" + JacksonUtil.toJSon(carInfo));
+
+        Map map = JacksonUtil.readValue(car_json, Map.class);
+        System.out.println("转化为map:\n" + map);
 
         //json转实体数组方法1
         String carlist_josn = "[{\"name\":\"test1\",\"code\":\"001\"},{\"name\":\"test2\",\"code\":\"002\"},{\"name\":\"test3\",\"code\":\"003\"}]";

@@ -33,7 +33,7 @@ public class Recursion {
      * 阶乘——尾递归
      *
      * @param n
-     * @param res=1：递归系数
+     * @param res=1：维护递归层次的深度
      * @return
      */
     int facttail(int n, int res) {

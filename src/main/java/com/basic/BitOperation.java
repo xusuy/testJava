@@ -20,4 +20,12 @@ public class BitOperation {
         System.out.println(bit_other);
     }
 
+    int add(int a, int b) //递归形式
+    {
+        if (b == 0) //递归结束条件：如果右加数为0，即不再有进位了，则结束。
+            return a;
+        int s = a ^ b;
+        int c = (a & b) << 1; //进位左移1位，达到进位的目的。
+        return add(s, c); //再把'和'和'进位'相加。递归实现。
+    }
 }

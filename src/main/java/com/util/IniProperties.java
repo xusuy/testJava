@@ -1,7 +1,5 @@
 package com.util;
 
-import org.junit.Test;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -119,12 +117,6 @@ public class IniProperties {
     public boolean containsKey(String section, String key) {
         Properties propertiesMap = (Properties) sections.get(section);
         return propertiesMap.containsKey(key);
-    }
-
-    @Test
-    public void test() {
-        System.out.println("wx.jxhwx.api.key=" + getValue("wxconfig", "wx.jxhwx.api.key"));
-        System.out.println("jxh.app.core.url=" + getValue("项目配置", "jxh.app.core.url"));
     }
 
 }

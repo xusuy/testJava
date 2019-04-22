@@ -1,6 +1,13 @@
 package com.basic;
 
+import com.util.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Pattern;
 
 /**
  * @author xsy
@@ -71,5 +78,28 @@ public class StringTest {
         System.out.println(s3 == s);
         System.out.println(s3.intern() == s);
 
+    }
+
+    @Test
+    public void test2() {
+//        String va = null;
+//        System.out.println(va.replace(null,""));
+
+        System.out.println(StringUtils.isNumeric("1.9"));//false
+        System.out.println(isNumber("1.9"));
+    }
+
+    public boolean isNumber(String input) {
+        if (input == null || "".equals(input)) {
+            return false;
+        }
+        return Pattern.matches("-?[0-9]*(\\.?)[0-9]*", input);
+    }
+
+    @Test
+    public void test3() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse("2019-04-08");
+        System.out.println(date);
     }
 }
