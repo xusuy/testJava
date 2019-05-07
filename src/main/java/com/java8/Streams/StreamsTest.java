@@ -1,5 +1,6 @@
 package com.java8.Streams;
 
+import com.pojo.Anxinmanagcommunitygoods;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -68,6 +69,47 @@ public class StreamsTest {
                 .collect(Collectors.toList());                 // List< String >
 
         System.out.println(result);
+
+    }
+
+    @Test
+    public void test2() {
+        //to List
+        List<Anxinmanagcommunitygoods> list = new ArrayList<>();
+        Anxinmanagcommunitygoods goods = new Anxinmanagcommunitygoods();
+        goods.setGoodsName("1");
+        list.add(goods);
+        goods = new Anxinmanagcommunitygoods();
+        goods.setGoodsName("2");
+        list.add(goods);
+        goods = new Anxinmanagcommunitygoods();
+        goods.setGoodsName("3");
+        list.add(goods);
+        String join = String.join(",", list.stream().map(item -> item.getGoodsName()).collect(Collectors.toList()));
+        System.out.println(join);
+        List<String> strList = new ArrayList<>();
+        strList.addAll(list.stream().map
+                (item -> item.getGoodsName())
+                .collect(Collectors.toList()));
+        //filter
+        Anxinmanagcommunitygoods anxinmanagcommunitygoods = list.stream()
+                .filter(goo -> Objects.equals("2", goo.getGoodsName()))
+                .findFirst()
+//                .findAny()
+                .orElse(null);
+        System.out.println("orElse===" + anxinmanagcommunitygoods);
+
+        Optional<Anxinmanagcommunitygoods> goodsOptional = list.stream()
+                .filter(goo -> Objects.equals("2", goo.getGoodsName()))
+                .findAny();
+        if (goodsOptional.isPresent()) {
+            System.out.println("Optional===" + goodsOptional.get());
+        }
+
+        List<Anxinmanagcommunitygoods> filterList = list.stream()
+                .filter(go -> !Objects.equals("3", go.getGoodsName()))
+                .collect(Collectors.toList());
+        System.out.println("filter to List===" + filterList);
 
     }
 }
