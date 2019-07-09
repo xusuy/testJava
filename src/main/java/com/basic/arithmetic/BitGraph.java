@@ -3,12 +3,14 @@ package com.basic.arithmetic;
 /**
  * @author xsy
  * @create 2019-05-13 18:11
- * @desc 对16以下的数进行排序以及统计不同数字个数(位图法)
+ * @desc 位图法：对16以下的数进行排序以及统计不同数字个数
  **/
 public class BitGraph {
-    final int BITS_PRE_WORD = 32;
-    final static int max = 16;
+    private final int BITS_PRE_WORD = 32;
+    private final static int max = 16;
 
+    //16位bit从最低位到高位依次表示数字0,1,2,3...15。bit位，1代表存在该数字，0代表不存在
+    //返回16以下的数组的bit表示形式
     void setBit(int[] arr, int n) {
         arr[n / BITS_PRE_WORD] |= (1 << (n % BITS_PRE_WORD));
     }

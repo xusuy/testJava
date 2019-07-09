@@ -44,4 +44,11 @@ public class NumberUtil {
         List list1 = Arrays.asList(str1.split("\\$"));
         list1.forEach(o -> System.out.println(o));
     }
+
+    @Test
+    public void test1() {
+        Integer num = null;
+        //NullPointerException
+        int nun = num;
+    }
 }

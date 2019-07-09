@@ -102,4 +102,12 @@ public class StringTest {
         Date date = sdf.parse("2019-04-08");
         System.out.println(date);
     }
+
+    @Test
+    public void test4() {
+        String s1 = "血常规：2019-06-27-1";
+        String s2 = "血常规：2019-06-27-2";
+        String s3 = s1.replace(s1, s2);
+        System.out.println(s3);
+    }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.frame.mapper.AccountMapper">
+    <!-- 增加用户 -->
+    <insert id="addAccount" parameterType="com.frame.entity.Account">
+        INSERT INTO
+            user_account (id, name, userName, password, phoneNumber, mailbox, isEnabled, tid, token, status, state)
+        VALUES
+            (#{id}, #{name}, #{userName}, #{password}, #{phoneNumber}, #{mailbox}, #{isEnabled}, #{tid}, #{token}, 1, 1)
+    </insert>
+
+</mapper>
