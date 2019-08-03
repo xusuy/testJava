@@ -102,4 +102,10 @@ public class StringTest {
         Date date = sdf.parse("2019-04-08");
         System.out.println(date);
     }
+
+    @Test
+    public void test4(){
+        int[] array = new int[2];//int基本类型数组被初始化为0
+        System.out.println(array[0]);
+    }
 }

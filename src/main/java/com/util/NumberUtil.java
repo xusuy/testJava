@@ -44,4 +44,20 @@ public class NumberUtil {
         List list1 = Arrays.asList(str1.split("\\$"));
         list1.forEach(o -> System.out.println(o));
     }
+
+    @Test
+    public void test1() {
+        int a = 0;
+        int b = a++;
+        int c = ++a;
+        System.out.println(b + "");//0
+        System.out.println(c + "");//2
+
+        int d = 5;
+        while (true) {
+            if (d-- > 0) {//先返回值比较>0后运算
+                System.out.print(d);
+            } else return;
+        }
+    }
 }
