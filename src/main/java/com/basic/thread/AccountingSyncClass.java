@@ -27,13 +27,14 @@ public class AccountingSyncClass implements Runnable {
     public void run() {
         for (int j = 0; j < 1000000; j++) {
             increase();
+            //increase4Obj();
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
         //new新实例
         Thread t1 = new Thread(new AccountingSyncClass());
-        //new心事了
+        //new新实例
         Thread t2 = new Thread(new AccountingSyncClass());
         //启动线程
         t1.start();

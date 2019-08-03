@@ -108,4 +108,12 @@ public class StringTest {
         int[] array = new int[2];//int基本类型数组被初始化为0
         System.out.println(array[0]);
     }
+
+    @Test
+    public void test5() {
+        String s1 = "血常规：2019-06-27-1";
+        String s2 = "血常规：2019-06-27-2";
+        String s3 = s1.replace(s1, s2);
+        System.out.println(s3);
+    }
 }

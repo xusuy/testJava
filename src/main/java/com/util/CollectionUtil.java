@@ -1,16 +1,15 @@
 package com.util;
 
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
-import java.util.*;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /***
  * 集合
@@ -57,9 +56,22 @@ public class CollectionUtil {
         System.out.println(map.size());
     }
 
+    @Test
+    public void array_test() {
+        int intArray[] = new int[1];
+        System.out.println(intArray[0]);
+        Map<String, Object> fileMap = new HashMap<>();
+        List<String> idList = new ArrayList<>();
+        idList.add("1");
+        idList.add("2");
+        fileMap.put("customFiles", idList);
+        List<String> customFileIdList = (List<String>) fileMap.get("customFiles");
+        System.out.println(customFileIdList);
+    }
+
     //创建map，循环向list中新增map
     @Test
-    public void test3() {
+    public void test4() {
         Map<String, String> map1 = new HashMap<String, String>() {
             {
                 put("id", "1");
@@ -84,6 +96,8 @@ public class CollectionUtil {
             m.put("name", name);
         });
         System.out.println(mapList);
-    }
 
+        List<String> ids = mapList.stream().map(m -> m.get("id").equals("2") ? "2" : null).collect(Collectors.toList());
+        System.out.println("ids：" + ids);
+    }
 }

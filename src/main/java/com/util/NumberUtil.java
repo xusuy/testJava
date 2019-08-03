@@ -60,4 +60,11 @@ public class NumberUtil {
             } else return;
         }
     }
+
+    @Test
+    public void test2() {
+        Integer num = null;
+        //NullPointerException
+        int nun = num;
+    }
 }
