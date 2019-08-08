@@ -7,4 +7,6 @@ package com.frame.service;
  **/
 public interface AccountService {
     Object getAccountById(String id);
+
+    void testTransation();
 }

@@ -12,7 +12,7 @@
     </settings>
 
 	<typeAliases>
-		<typeAlias type="com.frame.entity.Account" alias="User"/>
+		<typeAlias type="com.frame.entity.Account" alias="account"/>
 		<typeAlias type="com.frame.util.PageData" alias="pd"/>
 	</typeAliases>
 	

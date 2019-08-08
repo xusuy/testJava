@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,5 +100,47 @@ public class CollectionUtil {
 
         List<String> ids = mapList.stream().map(m -> m.get("id").equals("2") ? "2" : null).collect(Collectors.toList());
         System.out.println("ids：" + ids);
+    }
+
+    @Test
+    public void testCycleRemoveMapOrList() {
+        Map<String, Object> map = new HashMap<String, Object>() {
+            {
+                put("name", "jack");
+                put("age", 20);
+            }
+        };
+        //ConcurrentModificationException
+//        map.entrySet().forEach(m -> {
+//            if (Objects.equals("name", m.getKey())) {
+//                map.remove(m.getKey());
+//            }
+//        });
+        //ConcurrentModificationException
+//        for (Map.Entry<String, Object> m : map.entrySet()) {
+//            if (Objects.equals("name", m.getKey())) {
+//                map.remove(m.getKey());
+//            }
+//        }
+        //有效
+//        map.remove("name");
+        map.entrySet().forEach(m -> System.out.println(m.getKey() + ":" + m.getValue()));
+
+        List<String> strList1 = new ArrayList<String>() {{
+            add("1");
+            add("2");
+            add("1");
+            add("2");
+        }};
+        List<String> strList2 = new ArrayList<String>() {{
+            add("1");
+            add("2");
+            add("1");
+            add("2");
+        }};
+        strList1.remove("1");//只会remove第一个
+        System.out.println("strList1===" + strList1);
+        strList2.removeAll(Collections.singleton("1"));//remove所有
+        System.out.println("strList2===" + strList2);
     }
 }

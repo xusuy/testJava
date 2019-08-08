@@ -3,11 +3,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.frame.mapper.AccountMapper">
     <!-- 增加用户 -->
-    <insert id="addAccount" parameterType="com.frame.entity.Account">
+    <insert id="addAccount" parameterType="account">
         INSERT INTO
             user_account (id, name, userName, password, phoneNumber, mailbox, isEnabled, tid, token, status, state)
         VALUES
             (#{id}, #{name}, #{userName}, #{password}, #{phoneNumber}, #{mailbox}, #{isEnabled}, #{tid}, #{token}, 1, 1)
     </insert>
+
+    <update id="updateUserNameById" parameterType="String">
+        update user_account set userName=concat(userName,'_test') where id=#{id}
+    </update>
 
 </mapper>

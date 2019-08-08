@@ -110,4 +110,23 @@ public class StringTest {
         String s3 = s1.replace(s1, s2);
         System.out.println(s3);
     }
+
+    //null + ""
+    @Test
+    public void test5() {
+        String nullStr = null;
+        String newStr = nullStr + "";
+        System.out.println(newStr.length());
+        if (StringUtils.isNotEmpty(newStr)) {
+            System.out.println(newStr);
+        }
+    }
+
+    //java.lang.String cannot be cast to java.lang.Integer
+    @Test
+    public void test6() {
+        Object o = "6";
+        Integer resectionNum = (Integer)o;
+        System.out.println(o);
+    }
 }

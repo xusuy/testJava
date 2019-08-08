@@ -25,4 +25,9 @@ public class TestController {
     public Object getAccountById(@RequestParam String id) {
         return accountService.getAccountById(id);
     }
+
+    @GetMapping(value = "testTransation")
+    public void testTransation(){
+        accountService.testTransation();
+    }
 }
