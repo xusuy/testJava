@@ -1,5 +1,6 @@
 package com.frame.mapper;
 
+import com.frame.entity.Account;
 import com.frame.entity.User;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
@@ -24,4 +25,6 @@ public interface AccountMapper {
     @Select("select * from `archived_15ec21a1-caf1-42c3-be18-4958b2b2d5e8` where `c_40d527e879cd451fad1cb7229f06927d`=#{phoneNo}")
     @ResultMap(value = "userResult")
     User getAccountByPhoneNo(String phoneNo);
+
+    boolean updateUserNameById(String id);
 }
