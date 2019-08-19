@@ -67,7 +67,7 @@ public class StringTest {
     }
 
     @Test
-    public void test1() {
+    public void testEqualsOrDengyu() {
         Object o = "123";
         String s = "123";
         Object o2 = s;
@@ -119,7 +119,7 @@ public class StringTest {
 
     //null + ""
     @Test
-    public void test5() {
+    public void test6() {
         String nullStr = null;
         String newStr = nullStr + "";
         System.out.println(newStr.length());
@@ -130,9 +130,20 @@ public class StringTest {
 
     //java.lang.String cannot be cast to java.lang.Integer
     @Test
-    public void test6() {
+    public void test7() {
         Object o = "6";
-        Integer resectionNum = (Integer)o;
+        int resectionNum = (Integer)o;
         System.out.println(o);
+    }
+
+    @Test
+    public void test8() {
+        String s = "a";
+        char c = 'c';
+        int i = 97;
+        char[] ch ={'a'};
+        System.out.println(s.equals(c));
+        System.out.println(s.equals(i));
+        System.out.println(s.equals(ch));
     }
 }

@@ -7,8 +7,13 @@ package com.basic;
  **/
 public abstract class AbstratClass {
 
+    AbstratClass() {
+
+    }
+
     public abstract void t1();
 
     public void t2() {
+        System.out.println("AbstratClass====t2");
     }
 }

@@ -48,6 +48,11 @@ public enum EnumTest {
                 enumTest = TWO;
                 break;
         }
+//        float f = Float.parseFloat(opCodeStr);
+////        //Incompatible types. Found: 'float', required: 'char, byte, short, int, Character, Byte, Short, Integer, String, or an enum'
+////        switch (f){
+////
+////        }
         return enumTest;
     }
 

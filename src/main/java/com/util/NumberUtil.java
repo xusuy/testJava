@@ -53,11 +53,17 @@ public class NumberUtil {
         System.out.println(b + "");//0
         System.out.println(c + "");//2
 
-        int d = 5;
+//        int d = 5;
+////        while (true) {
+////            if (d-- > 0) {//先返回值比较>0后运算
+////                System.out.print(d);//43210
+////            }else return;
+////        }
+        int f = 5;
         while (true) {
-            if (d-- > 0) {//先返回值比较>0后运算
-                System.out.print(d);
-            } else return;
+            if (--f > 0) {//先运算比较>0后返回值
+                System.out.print(f);//4321
+            }else return;
         }
     }
 
@@ -66,5 +72,10 @@ public class NumberUtil {
         Integer num = null;
         //NullPointerException
         int nun = num;
+    }
+
+    int x(){
+        char a = 'a';
+        return (int)a;
     }
 }

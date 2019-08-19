@@ -108,6 +108,7 @@ public class CollectionUtil {
             {
                 put("name", "jack");
                 put("age", 20);
+                put(null,null);
             }
         };
         //ConcurrentModificationException
