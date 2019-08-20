@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * @author xsy
  * @create 2019-08-16 16:54
- * @desc 业务类
+ * @desc 业务类1
  **/
-public class AppleService {
+public class AppleService1 {
 
     // 过滤器的筛选方法(行为参数化：让函数仅保留模板代码，而把筛选条件抽离出来当做参数传递进来)
     public static List<Apple> getFilterApplesByAppleFilter(List<Apple> sourceApples, AppleFilter appleFilter) {
@@ -30,7 +30,8 @@ public class AppleService {
             add(new Apple(2l, Color.BLUE, 2.0f, "1"));
             add(new Apple(3l, Color.GREEN, 3.0f, "1"));
         }};
+        //使用自定义的函数式接口
         List<Apple> newApples = getFilterApplesByAppleFilter(sourceApples, apple -> apple.getColor().equals(Color.RED) && apple.getWeight() > 5);
-        System.out.println(newApples);
+        System.out.println("Apple result by AppleFilter===" + newApples);
     }
 }

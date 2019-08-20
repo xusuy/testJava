@@ -2,6 +2,7 @@ package com.basic;
 
 import com.util.StringUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
@@ -145,5 +146,10 @@ public class StringTest {
         System.out.println(s.equals(c));
         System.out.println(s.equals(i));
         System.out.println(s.equals(ch));
+    }
+
+    @Test
+    public void theTypeTest(){
+        System.out.println(NumberUtils.isDigits("NaN"));
     }
 }

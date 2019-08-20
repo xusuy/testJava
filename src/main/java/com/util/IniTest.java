@@ -14,7 +14,7 @@ import java.lang.reflect.Constructor;
  * @desc 测试读取ini
  **/
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:applicationContext.xml"})
+@ContextConfiguration({"classpath:applicationContext-spring.xml"})
 public class IniTest {
 
     @Resource

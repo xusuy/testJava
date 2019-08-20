@@ -1,11 +1,13 @@
 package com.domain;
 
+import com.util.wechat.bean.BaseBean;
+
 /**
  * @author xsy
  * @create 2019-08-16 16:50
  * @desc
  **/
-public class Apple {
+public class Apple extends BaseBean {
     /** 编号 */
     private Long id;
     /** 颜色 */
@@ -57,13 +59,4 @@ public class Apple {
         this.origin = origin;
     }
 
-    @Override
-    public String toString() {
-        return "Apple{" +
-                "id=" + id +
-                ", color='" + color + '\'' +
-                ", weight=" + weight +
-                ", origin='" + origin + '\'' +
-                '}';
-    }
 }
