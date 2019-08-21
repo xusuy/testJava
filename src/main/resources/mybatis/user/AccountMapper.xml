@@ -14,4 +14,48 @@
         update user_account set userName=concat(userName,'_test') where id=#{id}
     </update>
 
+    <insert id="addUser" parameterType="com.frame.entity.User">
+        insert into user_account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="userName != null">
+                userName,
+            </if>
+            <if test="phoneNumber != null">
+                phoneNumber,
+            </if>
+            <if test="mailbox != null">
+                mailbox,
+            </if>
+            <if test="tenantId != null">
+                tenantId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=INTEGER},
+            </if>
+            <if test="phoneNumber != null">
+                #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="mailbox != null">
+                #{mailbox,jdbcType=VARCHAR},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
 </mapper>

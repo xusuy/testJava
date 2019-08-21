@@ -1,48 +1,51 @@
 package com.frame.entity;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 /**
  * @author xsy
  * @create 2019-07-09 16:38
  * @desc
  **/
+@Getter
+@Setter
+@Accessors(chain = true)//支持链式操作
+@RequiredArgsConstructor(staticName = "of")//创建设置name对象的静态构造方法User.of('xiaoming')
 public class User {
     /**
-     *  id
+     * id
      */
     private String id;
-
-
     /**
-     *  名称
+     * 用户名
      */
+    @NonNull
     private String name;
 
     /**
-     *  手机号
+     * 手机号
      */
-    private String phoneNo;
+    private String phoneNumber;
 
-    public String getId() {
-        return id;
-    }
+    /**
+     * mailbox
+     */
+    private String mailbox;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
+    /**
+     * 登录名
+     */
+    private String userName;
+    /**
+     * 租户id
+     */
+    private String tenantId;
+    /**
+     * tid
+     */
+    private String tid;
 }

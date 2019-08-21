@@ -1,6 +1,5 @@
 package com.frame.config;
 
-import com.util.JacksonUtil;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,7 +1,10 @@
 package com.frame.controller;
 
+import com.frame.entity.User;
+import com.frame.model.UserModel;
 import com.frame.service.AccountService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +30,13 @@ public class TestController {
     }
 
     @GetMapping(value = "testTransation")
-    public void testTransation(){
+    public void testTransation() {
         accountService.testTransation();
     }
+
+    @PostMapping(value = "addUser")
+    public User addUser(UserModel userModel) {
+        return accountService.addUser(userModel);
+    }
+
 }

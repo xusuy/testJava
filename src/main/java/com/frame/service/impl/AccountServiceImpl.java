@@ -1,9 +1,12 @@
 package com.frame.service.impl;
 
-import com.frame.entity.Account;
 import com.frame.entity.User;
 import com.frame.mapper.AccountMapper;
+import com.frame.model.UserModel;
 import com.frame.service.AccountService;
+import com.util.UUIDGenerator;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +20,13 @@ import java.util.List;
  **/
 @Service
 public class AccountServiceImpl implements AccountService {
-    private AccountMapper accountMapper;
 
-    public AccountServiceImpl(AccountMapper accountMapper) {
+    private AccountMapper accountMapper;
+    private ModelMapper mapper;
+
+    public AccountServiceImpl(AccountMapper accountMapper, ModelMapper mapper) {
         this.accountMapper = accountMapper;
+        this.mapper = mapper;
     }
 
     @Override
@@ -41,6 +47,19 @@ public class AccountServiceImpl implements AccountService {
     public void testTransation() {
         boolean bool = accountMapper.updateUserNameById("15EC8080-5E40-4F9D-BDC0-05D10E495D73");
         int i = 0;
-        int r = 10/i;
+        int r = 10 / i;
+    }
+
+    @Override
+    public User addUser(UserModel userModel) {
+        //方法1：使用spring BeanUtils
+//        User user = new User();
+//        BeanUtils.copyProperties(userModel, user);
+        //方法2：使用org ModelMapper：可以动态设置源类和目标类的字段映射关系
+        User user = mapper.map(userModel, User.class)
+                .setId(UUIDGenerator.sequentialUUIDString())
+                .setTenantId(UUIDGenerator.sequentialUUIDString());//链式代码
+        accountMapper.addUser(user);
+        return user;
     }
 }
