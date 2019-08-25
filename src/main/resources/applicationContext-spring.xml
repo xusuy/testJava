@@ -20,7 +20,7 @@
         </property>
     </bean>
 
-    <!-- 启用注解 -->
+    <!-- 启用注解 不然代码中的注解可能会无效-->
     <context:annotation-config/>
     <!--配置事务管理器（必须先把对象先放到spring容器，这里是扫描的，否则事务管理失效）-->
     <context:component-scan base-package="com.frame">

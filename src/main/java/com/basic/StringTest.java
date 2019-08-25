@@ -1,6 +1,6 @@
 package com.basic;
 
-import com.util.StringUtil;
+import com.frame.entity.Account;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
@@ -105,7 +105,7 @@ public class StringTest {
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         int[] array = new int[2];//int基本类型数组被初始化为0
         System.out.println(array[0]);
     }
@@ -133,7 +133,7 @@ public class StringTest {
     @Test
     public void test7() {
         Object o = "6";
-        int resectionNum = (Integer)o;
+        int resectionNum = (Integer) o;
         System.out.println(o);
     }
 
@@ -142,14 +142,26 @@ public class StringTest {
         String s = "a";
         char c = 'c';
         int i = 97;
-        char[] ch ={'a'};
+        char[] ch = {'a'};
         System.out.println(s.equals(c));
         System.out.println(s.equals(i));
         System.out.println(s.equals(ch));
     }
 
     @Test
-    public void theTypeTest(){
+    public void theTypeTest() {
         System.out.println(NumberUtils.isDigits("NaN"));
+    }
+
+    public void fineTest() {
+        //final修饰的普通变量，值不能改变
+        final int i = 0;
+//        i++;
+        //final修饰的实例变量，引用不能改变，但引用的值可以改变
+        final String str = "s";
+//        str = "t";
+        final Account account = new Account();
+        account.setName("name");
+//        account = new Account();
     }
 }

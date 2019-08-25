@@ -9,6 +9,7 @@ import java.util.List;
 //基本类型
 public class BasicType {
     private boolean boo;
+
     //boolean初始化false
     @Test
     void test1() {
@@ -56,5 +57,11 @@ public class BasicType {
         b6 = b4 + b5;//final修饰的变量，编译器优化b6=10;
 //        b3 = (b1 + b2);//byte,short,char计算时先转换为int，有更高的操作数存在则转换为高的一方
 //        System.out.println(b6 + b3);
+    }
+
+    void test7() {
+        Runnable runnable = () -> {
+            System.out.println("s123");
+        };
     }
 }
