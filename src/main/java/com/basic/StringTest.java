@@ -48,13 +48,17 @@ public class StringTest {
 
         String s1 = "a";
         System.out.println((s1 + "b") == "ab");//运行时确定s1，s1 + "b"是堆中新对象
+        String s4 = s1 + "d";
+        String s5 = s1 + "d";
+        System.out.println(s4 == s5);////运行时确定s4、s5，是堆中新对象
+        //intern():如果字符串常量池中没有这个字符则添加，然后返回这个引用；如果有则直接返回这个引用
+        System.out.println("intern() 比较======");
+        System.out.println((s1 + "b").intern() == "ab");
+        System.out.println(s4.intern() == s5.intern());
 
         String s2 = "c" + "d";//编译期常量折叠成String s2 = "cd"
         System.out.println(s2 == "cd");
 
-        String s4 = s1 + "d";
-        String s5 = s1 + "d";
-        System.out.println(s4 == s5);
     }
 
     public static String stringSwith(String id) {

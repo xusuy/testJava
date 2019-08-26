@@ -10,13 +10,19 @@ public class ClassTest {
         Dog dog1 = null;
         Dog dog2 = new Dog();
         if (dog1 instanceof Animal) {
-            Animal animal = (Animal) dog1;
+            Animal animal = dog1;
             System.out.println("dog1 is animal");
         }
         if (dog2 instanceof Animal) {
-            Animal animal = (Animal) dog2;
+            Animal animal = dog2;
             System.out.println("dog2 is animal");
         }
+        Dog blackDog = new BlackDog();
+        if (blackDog instanceof BlackDog) {
+            System.out.println("blackDog is BlackDog");
+        }
+        Dog.t1();
+        blackDog.t1();
     }
 
 }
@@ -25,4 +31,17 @@ interface Animal {
 }
 
 class Dog implements Animal {
+    static void t1() {
+        Dog dog = new Dog();
+        System.out.println("dog static t1");
+        dog.t2();
+    }
+
+    void t2() {
+        System.out.println("dog static t2");
+    }
+}
+
+class BlackDog extends Dog {
+
 }
