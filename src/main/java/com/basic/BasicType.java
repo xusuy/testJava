@@ -1,6 +1,7 @@
 package com.basic;
 
 import com.domain.Apple;
+import com.util.IniProperties;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -62,6 +63,13 @@ public class BasicType {
     void test7() {
         Runnable runnable = () -> {
             System.out.println("s123");
+        };
+
+        Object o = new Object(){
+            @Override
+            public String toString() {
+                return super.toString();
+            }
         };
     }
 }

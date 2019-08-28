@@ -6,7 +6,7 @@ package com.basic;
  * @desc class类加载
  **/
 public class ClassTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         Dog dog1 = null;
         Dog dog2 = new Dog();
         if (dog1 instanceof Animal) {
@@ -23,6 +23,10 @@ public class ClassTest {
         }
         Dog.t1();
         blackDog.t1();
+        Dog d1 = null;
+        System.out.println(d1.i);//没有空指针异常
+//        d1.t2();//NullPointerException
+        Dog dog = Dog.class.newInstance();
     }
 
 }
@@ -31,6 +35,7 @@ interface Animal {
 }
 
 class Dog implements Animal {
+    static int i;
     static void t1() {
         Dog dog = new Dog();
         System.out.println("dog static t1");
