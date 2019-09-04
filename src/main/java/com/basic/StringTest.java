@@ -1,6 +1,7 @@
 package com.basic;
 
 import com.frame.entity.Account;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import java.util.regex.Pattern;
  * @create 2017-02-21 15:09
  * @desc string
  **/
+@Slf4j
 public class StringTest {
 
     public static void main(String[] args) {
@@ -167,5 +169,10 @@ public class StringTest {
         final Account account = new Account();
         account.setName("name");
 //        account = new Account();
+    }
+
+    @org.junit.Test
+    public void test9(){
+        log.info("test...");
     }
 }

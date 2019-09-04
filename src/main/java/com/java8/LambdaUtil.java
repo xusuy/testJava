@@ -103,4 +103,21 @@ public class LambdaUtil {
         testLambdaCompare();
     }
 
+    public void testLambda() {
+        Runnable runnable1 = () -> System.out.println("123");
+        Runnable runnable2 = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("123");
+            }
+        };
+        Thread thread1 = new Thread(() -> System.out.println("456"));
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("456");
+            }
+        });
+    }
+
 }
