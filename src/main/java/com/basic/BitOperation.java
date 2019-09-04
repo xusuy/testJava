@@ -1,5 +1,7 @@
 package com.basic;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author xsy
  * @create 2019-03-04 11:36
@@ -27,5 +29,14 @@ public class BitOperation {
         int s = a ^ b;
         int c = (a & b) << 1; //进位左移1位，达到进位的目的。
         return add(s, c); //再把'和'和'进位'相加。递归实现。
+    }
+
+    @Test
+    void test1() {
+        int int1 = 132;
+        System.out.println(Integer.toOctalString(int1));//十进制转八进制
+        System.out.println(Integer.parseInt("13", 8));//八进制转十进制
+        int i = 013 * 014;
+        System.out.println(i);
     }
 }

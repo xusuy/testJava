@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -108,7 +109,7 @@ public class CollectionUtil {
             {
                 put("name", "jack");
                 put("age", 20);
-                put(null,null);
+                put(null, null);
             }
         };
         //ConcurrentModificationException
@@ -143,5 +144,16 @@ public class CollectionUtil {
         System.out.println("strList1===" + strList1);
         strList2.removeAll(Collections.singleton("1"));//remove所有
         System.out.println("strList2===" + strList2);
+    }
+
+    @Test
+    public void testLinkedList() {
+        List<Integer> linkedList = new LinkedList<Integer>() {{
+            add(6);
+            add(5);
+            add(1);
+            add(2);
+        }};
+        System.out.println(linkedList);
     }
 }

@@ -14,4 +14,6 @@ public interface AccountService {
     void testTransation();
 
     User addUser(UserModel userModel);
+
+    Object getAccountById2(String id);
 }

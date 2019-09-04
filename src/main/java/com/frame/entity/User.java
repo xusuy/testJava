@@ -1,7 +1,6 @@
 package com.frame.entity;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -23,7 +22,7 @@ public class User {
     /**
      * 用户名
      */
-    @NonNull
+//    @NonNull     //这个属性对数据库各字段映射实体类有影响
     private String name;
 
     /**
@@ -48,4 +47,31 @@ public class User {
      * tid
      */
     private String tid;
+
+    /**
+     *  password
+     */
+    private String password;
+
+    /**
+     *  state
+     */
+    private int state;
+
+    /**
+     *  isEnabled
+     */
+    private String isEnabled;
+
+    /**
+     *  token
+     */
+    private String token;
+
+    /**
+     *  status
+     */
+    private String status;
+
+
 }

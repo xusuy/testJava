@@ -16,4 +16,10 @@ public abstract class AbstratClass {
     public void t2() {
         System.out.println("AbstratClass====t2");
     }
+
+    public AbstratClass t3() {
+        return this;
+    }
+
+    ;
 }

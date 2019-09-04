@@ -1,5 +1,6 @@
 package com.util;
 
+import lombok.experimental.var;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -63,7 +64,7 @@ public class NumberUtil {
         while (true) {
             if (--f > 0) {//先运算比较>0后返回值
                 System.out.print(f);//4321
-            }else return;
+            } else return;
         }
     }
 
@@ -74,8 +75,17 @@ public class NumberUtil {
         int nun = num;
     }
 
-    int x(){
+    int x() {
         char a = 'a';
-        return (int)a;
+        return (int) a;
+    }
+
+    @Test
+    public void test3() {
+        double d = 10.42;
+        System.out.println(Math.floor(d));//floor(地板)：小于或等于参数且等于数学整数的浮点值
+        System.out.println(Math.ceil(d));//ceil(天花板)：大于或等于参数且等于数学整数的浮点值
+//        var i = "10.42";
+//        System.out.println(Integer.parseInt(i));
     }
 }

@@ -1,6 +1,7 @@
 package com.frame.service.impl;
 
 import com.frame.entity.User;
+import com.frame.entity.User2;
 import com.frame.mapper.AccountMapper;
 import com.frame.model.UserModel;
 import com.frame.service.AccountService;
@@ -37,6 +38,19 @@ public class AccountServiceImpl implements AccountService {
             {
                 add(user1);
                 add(user2);
+            }
+        };
+        return users;
+    }
+
+    @Override
+    public Object getAccountById2(String id) {
+        User2 user2_1 = accountMapper.getAccountById2(id);
+        User2 user2_2 = accountMapper.getAccountByPhoneNo2("11111111111");
+        List<User2> users = new ArrayList<User2>() {
+            {
+                add(user2_1);
+                add(user2_2);
             }
         };
         return users;

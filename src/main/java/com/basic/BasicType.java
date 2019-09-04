@@ -65,11 +65,19 @@ public class BasicType {
             System.out.println("s123");
         };
 
-        Object o = new Object(){
+        Object o = new Object() {
             @Override
             public String toString() {
                 return super.toString();
             }
         };
     }
+
+    int test7(int i) {  //方法重载
+        return i;
+    }
+
+    ;
+
+//    int test7(){return 1;} test7()已经定义
 }
