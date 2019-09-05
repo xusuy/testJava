@@ -4,7 +4,7 @@ import com.frame.entity.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -139,7 +139,10 @@ public class StringTest {
     @Test
     public void test7() {
         Object o = "6";
-        int resectionNum = (Integer) o;
+//        int resectionNum = (Integer) o;
+        String str = (String) o;
+        Object o2 = str;
+//        Integer i = (Integer)str; //不能转换
         System.out.println(o);
     }
 
@@ -171,7 +174,7 @@ public class StringTest {
 //        account = new Account();
     }
 
-    @org.junit.Test
+    @Test
     public void test9(){
         log.info("test...");
     }

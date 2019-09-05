@@ -65,10 +65,10 @@ public class BasicType {
             System.out.println("s123");
         };
 
-        Object o = new Object() {
+        Object o = new Object() {//重写equals方法
             @Override
-            public String toString() {
-                return super.toString();
+            public boolean equals(Object obj) {
+                return true;
             }
         };
     }
