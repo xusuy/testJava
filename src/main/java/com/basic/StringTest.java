@@ -35,6 +35,7 @@ public class StringTest {
         System.out.println("aaa".replaceAll("a", "\\\\."));
         System.out.println("aaa".replaceFirst("a", "\\."));
         System.out.println("aaa".replaceFirst("a", "\\\\."));
+        System.out.println("aaa.bb.cc".replaceAll(".", "/"));//"."在正则中表示所有字符
 //        String testUrl = "https://qxymgr-d.ywsoftware.cn/files\\upload\\201901\\ba4e7775-52c4-4aba-864f-804c306b2279.png";
         String testUrl = "https://qxymgr-d.ywsoftware.cn/files/upload/201901/ba4e7775-52c4-4aba-864f-804c306b2279.png";
         System.out.println("replace testUrl=" + testUrl.replace("\\", "/"));
@@ -157,11 +158,6 @@ public class StringTest {
         System.out.println(s.equals(ch));
     }
 
-    @Test
-    public void theTypeTest() {
-        System.out.println(NumberUtils.isDigits("NaN"));
-    }
-
     public void fineTest() {
         //final修饰的普通变量，值不能改变
         final int i = 0;
@@ -175,7 +171,24 @@ public class StringTest {
     }
 
     @Test
-    public void test9(){
+    public void test9() {
         log.info("test...");
+    }
+
+    @Test
+    public void test10() {
+        String str;
+//        System.out.println(str);
+        int i = 1;
+        if (i == 1) {
+            str = "st";
+        }
+//        System.out.println(str);
+        if (i == 1) {
+            str = "st";
+        } else {
+            str = "str";
+        }
+        System.out.println(str);
     }
 }

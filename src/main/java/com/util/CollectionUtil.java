@@ -126,6 +126,7 @@ public class CollectionUtil {
 //        }
         //有效
 //        map.remove("name");
+        map.forEach((key, value) -> System.out.println(key + ":" + value));
         map.entrySet().forEach(m -> System.out.println(m.getKey() + ":" + m.getValue()));
 
         List<String> strList1 = new ArrayList<String>() {{

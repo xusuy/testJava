@@ -86,7 +86,7 @@ public class StreamsTest {
         goods.setGoodsName("3");
         list.add(goods);
         String join = String.join(",", list.stream().map(item -> item.getGoodsName()).collect(Collectors.toList()));
-        System.out.println(join);
+        System.out.println("join===" + join);
         List<String> strList = new ArrayList<>();
         strList.addAll(list.stream().map
                 (item -> item.getGoodsName())

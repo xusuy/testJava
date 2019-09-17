@@ -1,6 +1,7 @@
 package com.util;
 
 import lombok.experimental.var;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -87,5 +88,13 @@ public class NumberUtil {
         System.out.println(Math.ceil(d));//ceil(天花板)：大于或等于参数且等于数学整数的浮点值
 //        var i = "10.42";
 //        System.out.println(Integer.parseInt(i));
+    }
+
+    @Test
+    public void theTypeTest() {
+        //是否正整型数字
+        System.out.println(NumberUtils.isDigits("12"));
+        //是否数字包括小数
+        System.out.println(NumberUtils.isNumber("12.0001"));
     }
 }

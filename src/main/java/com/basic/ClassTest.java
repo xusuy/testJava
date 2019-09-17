@@ -1,5 +1,7 @@
 package com.basic;
 
+import org.junit.Test;
+
 /**
  * @author xsy
  * @create 2017-02-25 16:53
@@ -73,6 +75,13 @@ class Dog implements Animal {
 
     void t2() {
         System.out.println("dog Non-static t2");
+        try {
+            Animal animal = Animal.class.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }
 
