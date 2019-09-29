@@ -16,7 +16,11 @@ public class ArraysTest {
         Integer three = new Integer(3);
         Integer four = new Integer(4);
         List<Integer> intList = new ArrayList<>(Arrays.asList(one, two, three, four));
+        List<Integer> intList2 = Arrays.asList(new Integer[]{one, two, three, four});
         System.out.println(intList.get(0));
         System.out.println(intList.get(0) == one);
+        System.out.println(intList2.get(0) == one);
+        intList.add(5);
+//        intList2.add(5); //抛出UnsupportedOperationException，因为Arrays.ArrayList中没有重写add()方法
     }
 }

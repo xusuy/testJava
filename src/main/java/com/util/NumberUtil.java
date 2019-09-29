@@ -97,4 +97,14 @@ public class NumberUtil {
         //是否数字包括小数
         System.out.println(NumberUtils.isNumber("12.0001"));
     }
+
+    @Test
+    public void test4() {
+        Integer intg = 100;
+        System.out.println(intg.equals(100));
+        System.out.println(intg == 100l);//100L
+        Integer t1 = 128;
+        Integer t2 = 128;
+        System.out.println(t1 == t2);//IntegerCache[-128,127]
+    }
 }
