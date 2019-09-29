@@ -7,7 +7,6 @@ import com.frame.model.UserModel;
 import com.frame.service.AccountService;
 import com.util.UUIDGenerator;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,16 +30,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Object getAccountById(String id) {
-        User user1 = accountMapper.getAccountById(id);
-        User user2 = accountMapper.getAccountByPhoneNo("11111111111");
-        List<User> users = new ArrayList<User>() {
-            {
-                add(user1);
-                add(user2);
-            }
-        };
-        return users;
+    public User getAccountById(String id) {
+        return accountMapper.getAccountById(id);
     }
 
     @Override
@@ -54,6 +45,21 @@ public class AccountServiceImpl implements AccountService {
             }
         };
         return users;
+    }
+
+    @Override
+    public User updateUser(UserModel userModel) {
+        User user = mapper.map(userModel, User.class)
+                .setTenantId(UUIDGenerator.sequentialUUIDString());//链式代码
+        accountMapper.updateUser(user);
+        return user;
+    }
+
+    @Override
+    public User queryUserInfo(UserModel userModel) {
+        return mapper.map(userModel, User.class)
+            .setId(UUIDGenerator.sequentialUUIDString())
+            .setTenantId(UUIDGenerator.sequentialUUIDString());//链式代码
     }
 
     @Transactional(rollbackFor = Exception.class)

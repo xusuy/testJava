@@ -2,6 +2,8 @@ package com.basic;
 
 import org.junit.Test;
 
+import java.lang.reflect.Method;
+
 /**
  * @author xsy
  * @create 2017-02-25 16:53
@@ -10,7 +12,9 @@ import org.junit.Test;
 public class ClassTest {
     static int i;
     String str;
+
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
+//        str=str+"";
         Dog dog1 = null;
         Dog dog2 = new Dog();
         if (dog1 instanceof Animal) {
@@ -31,6 +35,11 @@ public class ClassTest {
         System.out.println(d1.i);//没有空指针异常
 //        d1.t2();//NullPointerException
         Dog dog = Dog.class.newInstance();
+        try {
+            Method method_t2 = Dog.class.getMethod("t2", new Class[0]);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
     }
 
     static void f1() {
@@ -40,7 +49,8 @@ public class ClassTest {
     }
 
     class ClassTestSub {//成员内部类
-        public void main(String[] args){//内部类 不能有静态的定义；可以直接访问外部类的成员和静态内容
+
+        public void main(String[] args) {//内部类 不能有静态的定义；可以直接访问外部类的成员和静态内容
             main(new String[]{"1"});
             f1();
             f2();
@@ -51,11 +61,14 @@ public class ClassTest {
     }
 
     static class ClassTestSubStatic {//静态内部类
-        public static void main(String[] args){
+
+        public static void main(String[] args) {
 
         }
-        void f3(){//静态内部类不能访问外部的成员
+
+        void f3() {//静态内部类不能访问外部的成员
 //            f2();
+            f1();
         }
     }
 

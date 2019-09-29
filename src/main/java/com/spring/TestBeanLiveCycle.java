@@ -17,6 +17,7 @@ import javax.annotation.PreDestroy;
 public class TestBeanLiveCycle implements InitializingBean, DisposableBean {
     private final Logger logger = LoggerFactory.getLogger(TestBeanLiveCycle.class);
     private String message;
+    private String name;
 
     public TestBeanLiveCycle() {
         logger.info("step 1 this is in contruct, message=" + message);

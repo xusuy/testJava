@@ -9,11 +9,15 @@ import com.frame.model.UserModel;
  * @desc
  **/
 public interface AccountService {
-    Object getAccountById(String id);
+    User getAccountById(String id);
 
     void testTransation();
 
     User addUser(UserModel userModel);
 
     Object getAccountById2(String id);
+
+    User updateUser(UserModel userModel);
+
+    User queryUserInfo(UserModel userModel);
 }

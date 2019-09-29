@@ -42,4 +42,6 @@ public interface AccountMapper {
     boolean updateUserNameById(String id);
 
     boolean addUser(User user);
+
+    boolean updateUser(User user);
 }

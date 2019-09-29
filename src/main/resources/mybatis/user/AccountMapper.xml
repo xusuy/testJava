@@ -58,4 +58,23 @@
         </trim>
     </insert>
 
+    <update id="updateUser" parameterType="com.frame.entity.User">
+        update user_account
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                userName = #{userName,jdbcType=INTEGER},
+            </if>
+            <if test="phoneNumber != null">
+                phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="mailbox != null">
+                mailbox = #{mailbox,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+
 </mapper>
