@@ -1,6 +1,10 @@
 package com.util;
 
+import org.junit.Test;
+
+import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
+import java.net.URLEncoder;
 import java.net.UnknownHostException;
 
 /**
@@ -13,4 +17,8 @@ public class NetUtil {
         System.out.println(InetAddress.getLocalHost().getHostAddress());
     }
 
+    @Test
+    public void test1() throws UnsupportedEncodingException {
+        System.out.println(URLEncoder.encode("文佳","utf-8"));
+    }
 }

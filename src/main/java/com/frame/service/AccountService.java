@@ -3,6 +3,8 @@ package com.frame.service;
 import com.frame.entity.User;
 import com.frame.model.UserModel;
 
+import java.util.List;
+
 /**
  * @author xsy
  * @create 2019-07-09 15:29
@@ -20,4 +22,6 @@ public interface AccountService {
     User updateUser(UserModel userModel);
 
     User queryUserInfo(UserModel userModel);
+
+    List<User> getList(String id);
 }

@@ -1,5 +1,6 @@
 package com.frame.service.impl;
 
+import com.frame.entity.Account;
 import com.frame.entity.User;
 import com.frame.entity.User2;
 import com.frame.mapper.AccountMapper;
@@ -58,8 +59,22 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public User queryUserInfo(UserModel userModel) {
         return mapper.map(userModel, User.class)
-            .setId(UUIDGenerator.sequentialUUIDString())
-            .setTenantId(UUIDGenerator.sequentialUUIDString());//链式代码
+                .setId(UUIDGenerator.sequentialUUIDString())
+                .setTenantId(UUIDGenerator.sequentialUUIDString());//链式代码
+    }
+
+    @Override
+    public List<User> getList(String id) {
+        User user1_1 = User.of().setName("user_1_name");
+        User user1_2 = User.of().setName("user_2_name");
+        ;
+        List<User> users = new ArrayList<User>() {
+            {
+                add(user1_1);
+                add(user1_2);
+            }
+        };
+        return users;
     }
 
     @Transactional(rollbackFor = Exception.class)

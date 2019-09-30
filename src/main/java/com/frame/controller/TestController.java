@@ -1,5 +1,6 @@
 package com.frame.controller;
 
+import com.frame.entity.Account;
 import com.frame.entity.User;
 import com.frame.model.UserModel;
 import com.frame.service.AccountService;
@@ -8,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -67,5 +69,10 @@ public class TestController {
         String userId = request.getHeader("Accept");
         String header1 = request.getHeader("header1");
         return accountService.queryUserInfo(userModel);
+    }
+
+    @GetMapping(value = "getList")
+    public List<User> getList(@RequestParam String id) {
+        return accountService.getList(id);
     }
 }
