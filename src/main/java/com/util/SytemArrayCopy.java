@@ -18,7 +18,7 @@ public class SytemArrayCopy {
                 new User(2, "maco", "maco@qq,com"),
                 new User(3, "kitty", "kitty@qq,com")
         };
-        User[] target = new User[users.length];//新建一个目标对象数组
+        User[] target = new User[users.length];//新建一个目标对象数组(副本)
         System.arraycopy(users, 0, target, 0, users.length);//实现复制
         System.out.println("是否同一数组" + (users == target));
         System.out.println("源对象与目标对象的物理地址是否一样：" + (users[0] == target[0] ? "浅复制" : "深复制"));

@@ -54,10 +54,16 @@ public class GroupingTest {
         for (Map.Entry<String, Set<List<ZtreeModel>>> entry : nodeExecutorMap.entrySet()) {
             System.out.println("key=" + entry.getKey() + "；value=" + entry.getValue());
         }
+        System.out.println("========");
         //排序
         Map<String, Set<List<ZtreeModel>>> nodeExecutorSortMap = new LinkedHashMap<>();
         nodeExecutorMap.entrySet().stream().sorted(Map.Entry.comparingByKey()).
                 forEachOrdered(x -> nodeExecutorSortMap.put(x.getKey(), x.getValue()));
         nodeExecutorSortMap.entrySet().forEach(e -> System.out.println("key=" + e.getKey() + "；value=" + e.getValue()));
+
+        System.out.println("========");
+        Map<String, List<FlowNodeExecutor>> collect = flowNodeExecutorList.stream().collect(
+                Collectors.groupingBy(FlowNodeExecutor::getNodeId, Collectors.toList()));
+        collect.entrySet().forEach(e -> System.out.println("key=" + e.getKey() + "；value=" + e.getValue()));
     }
 }

@@ -19,6 +19,6 @@ public class NetUtil {
 
     @Test
     public void test1() throws UnsupportedEncodingException {
-        System.out.println(URLEncoder.encode("文佳","utf-8"));
+        System.out.println(URLEncoder.encode("杨五英","utf-8"));
     }
 }

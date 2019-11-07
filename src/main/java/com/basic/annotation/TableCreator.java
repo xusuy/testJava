@@ -66,9 +66,10 @@ public class TableCreator {
         for (String columnDef : columnDefs)
             createCommand.append("\n    " + columnDef + ",");
 
-        // Remove trailing comma
-        String tableCreate = createCommand.substring(
-                0, createCommand.length() - 1) + ");";
+        // 删除末尾","
+//        String tableCreate = createCommand.substring(
+//                0, createCommand.length() - 1) + ");";
+        String tableCreate = createCommand.deleteCharAt(createCommand.length() - 1).append(");").toString();
         return tableCreate;
     }
 

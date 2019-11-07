@@ -137,14 +137,19 @@ public class CollectionUtil {
         }};
         List<String> strList2 = new ArrayList<String>() {{
             add("1");
+            add(null);
             add("2");
             add("1");
+            add("2");
+            add(null);
             add("2");
         }};
         strList1.remove("1");//只会remove第一个
         System.out.println("strList1===" + strList1);
         strList2.removeAll(Collections.singleton("1"));//remove所有
-        System.out.println("strList2===" + strList2);
+        System.out.println("strList2 remore '1'===" + strList2);
+        strList2.removeAll(Collections.singleton(null));//remove null
+        System.out.println("strList2 remore 'null'===" + strList2);
     }
 
     @Test

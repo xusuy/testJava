@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -29,6 +32,8 @@ public class StringTest {
         //  字符串中\需要用来“\\”表示，例如System.out.println( "\\" ) ;只打印出一个"\"。" +
         //  正则表达式中也用\表示转义。\在正则表示式中也作为转义字符使用，所以在正则表达式中"\\\\"才表示一个反斜杠，即"\"
         //  对于replaceFirst和replaceAll中的replacement，如果其中包含\的话，将作为转义字符看待
+        // replace和replaceAll都是全部替换，replaceAll,replaceFirst用正则
+        System.out.println( "\\" );
         System.out.println("aaa".replace("a", "\\."));
         System.out.println("aaa".replace("a", "\\\\."));
         System.out.println("aaa".replaceAll("a", "\\."));
@@ -36,6 +41,8 @@ public class StringTest {
         System.out.println("aaa".replaceFirst("a", "\\."));
         System.out.println("aaa".replaceFirst("a", "\\\\."));
         System.out.println("aaa.bb.cc".replaceAll(".", "/"));//"."在正则中表示所有字符
+//        urlIsWhite("service/user/1");
+        urlIsWhite("service/goods/infos");
 //        String testUrl = "https://qxymgr-d.ywsoftware.cn/files\\upload\\201901\\ba4e7775-52c4-4aba-864f-804c306b2279.png";
         String testUrl = "https://qxymgr-d.ywsoftware.cn/files/upload/201901/ba4e7775-52c4-4aba-864f-804c306b2279.png";
         System.out.println("replace testUrl=" + testUrl.replace("\\", "/"));
@@ -51,17 +58,53 @@ public class StringTest {
 
         String s1 = "a";
         System.out.println((s1 + "b") == "ab");//运行时确定s1，s1 + "b"是堆中新对象
+        System.out.println((s1 + "b").equals("ab"));//true
         String s4 = s1 + "d";
         String s5 = s1 + "d";
         System.out.println(s4 == s5);////运行时确定s4、s5，是堆中新对象
         //intern():如果字符串常量池中没有这个字符则添加，然后返回这个引用；如果有则直接返回这个引用
         System.out.println("intern() 比较======");
-        System.out.println((s1 + "b").intern() == "ab");
+        System.out.println((s1 + "c").intern() == "ac");
         System.out.println(s4.intern() == s5.intern());
 
         String s2 = "c" + "d";//编译期常量折叠成String s2 = "cd"
         System.out.println(s2 == "cd");
 
+    }
+
+    //uri是否是白名单中
+    static boolean urlIsWhite(String uri) {
+        String whiteUrlStr = "service/user/{id},service/user/login,service/goods/infos";
+        List<String> whileApis = Arrays.asList(whiteUrlStr.split(","));
+        if (whileApis.contains(uri)) {
+            return true;
+        }
+        // path uri 处理
+        for (String wapi : whileApis) {
+            if (wapi.contains("{") && wapi.contains("}")) {
+                if (wapi.split("/").length == uri.split("/").length) {
+                    String reg = wapi.replaceAll("\\{.*}", ".*");
+                    System.out.println(reg);
+                    Pattern r = Pattern.compile(reg);
+                    Matcher m = r.matcher(uri);
+                    if (m.find()) {
+                        System.out.println(uri + "@PathVariable is matcher");
+                        return true;
+                    } else {
+                        System.out.println(uri + "@PathVariable is not matcher");
+                        return false;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    @Test
+    public void matcherTest() {
+        String s1 = "service/user/{123}";
+        String s2 = s1.replaceAll(".*\\{1,}", "666");
+        System.out.println(s2);
     }
 
     public static String stringSwith(String id) {
@@ -90,9 +133,6 @@ public class StringTest {
 
     @Test
     public void test2() {
-//        String va = null;
-//        System.out.println(va.replace(null,""));
-
         System.out.println(StringUtils.isNumeric("1.9"));//false
         System.out.println(isNumber("1.9"));
     }
@@ -150,7 +190,7 @@ public class StringTest {
     @Test
     public void test8() {
         String s = "a";
-        char c = 'c';
+        char c = 'a';
         int i = 97;
         char[] ch = {'a'};
         System.out.println(s.equals(c));

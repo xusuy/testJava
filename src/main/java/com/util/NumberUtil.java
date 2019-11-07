@@ -76,9 +76,10 @@ public class NumberUtil {
         int nun = num;
     }
 
-    int x() {
+    @Test
+    void x() {
         char a = 'a';
-        return (int) a;
+        System.out.println((int) a);
     }
 
     @Test
@@ -96,6 +97,7 @@ public class NumberUtil {
         System.out.println(NumberUtils.isDigits("12"));
         //是否数字包括小数
         System.out.println(NumberUtils.isNumber("12.0001"));
+        System.out.println(NumberUtils.isNumber("null"));
     }
 
     @Test
@@ -106,5 +108,25 @@ public class NumberUtil {
         Integer t1 = 128;
         Integer t2 = 128;
         System.out.println(t1 == t2);//IntegerCache[-128,127]
+    }
+
+    @Test
+    public void test5() {
+        double a = 2;
+        double b = a / 3;
+        System.out.println(b);
+        double c = a + 3 / 2;
+        System.out.println(c);
+    }
+
+    @Test
+    public void typeCast() {
+        Object o1 = "12.9";
+        //Double d1 = (Double) o1;//java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Double
+        String s1 = "+12.9";
+        System.out.println(Double.valueOf(s1));
+        String dataValue = (null + "").replace("+", "");
+        Double d2 = NumberUtils.isNumber(dataValue) ? Double.valueOf(dataValue): null;
+        System.out.println(d2);
     }
 }
