@@ -62,6 +62,7 @@ public class ListNode {
     //翻转链表(递归方式)
     public static ListNode reverse2(ListNode head) {
         if (head.next == null) {
+            //递归出口，找到最后一个
             return head;
         }
         ListNode reverseNode = reverse2(head.next);

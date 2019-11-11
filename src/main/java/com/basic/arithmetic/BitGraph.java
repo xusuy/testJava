@@ -10,7 +10,7 @@ public class BitGraph {
     private final static int max = 16;
 
     //16位bit从最低位到高位依次表示数字0,1,2,3...15。bit位，1代表存在该数字，0代表不存在
-    //返回16以下的数组的bit表示形式
+    //返回16以下的数组的bit表示形式(如果16位数字都是1，则表示0-15个数字都存在)
     void setBit(int[] arr, int n) {
         arr[n / BITS_PRE_WORD] |= (1 << (n % BITS_PRE_WORD));
     }
