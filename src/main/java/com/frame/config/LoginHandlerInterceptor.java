@@ -11,13 +11,12 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String userId = request.getHeader("Accept");
-        String header1 = request.getHeader("header1");
         String path = request.getServletPath();
         String whiteList = ".*/((loginapi)|(web-static)|(test)).*";
         if (path.matches(whiteList)) {
             return true;
         }
+        //校验cookies是否存在
         render(response);
         return false;
     }
