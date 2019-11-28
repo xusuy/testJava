@@ -38,10 +38,21 @@ public class BasicType {
 
     @Test
     void test4() {
-        float f = 5.1f;
-        int i = (byte) f;
+        float f1 = 5.1f;
+        int i = (byte) f1;
         byte b = 2;
         i = b;
+        int i1 = 011;
+        System.out.println(i1);
+        long long1 = 012;
+        float f2 = 5;
+        double d1 = 2;
+        double d2 = 0x12345678;
+        Double d3 = 2.0;
+//        Double d4 = 2;            //Incompatible types
+//        Long long2 = 012;         //Incompatible types
+//        Float f3 = 5;             //Incompatible types
+//        int i2 = (int) true; //Inconvertible types; cannot cast 'boolean' to 'int'
     }
 
     @Test
