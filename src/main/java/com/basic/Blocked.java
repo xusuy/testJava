@@ -18,6 +18,10 @@ class NeedsCleanup {
     }
 }
 
+interface Car{
+    void testCar(NeedsCleanup needsCleanup,String carName);
+}
+
 public class Blocked {
 
     static final class A {
@@ -44,16 +48,16 @@ public class Blocked {
         System.out.println(n2.id);
     }
 
-    void testInner() {//局部内部类不能有访问控制修饰符和static
+    void testInner() {
         int a = 1;
         final int b = 11;
         int inAge = new NeedsCleanup(1).age;
-        abstract class D {
+        abstract class D {//局部内部类不能有访问控制修饰符和static
             void dTest() {
-//                int aa = a;   //局部内部类不能使用外部非final
+                int aa = a;
                 int bb = b;
 //                a++;
-//                inAge++;      //局部内部类不能使用外部非final
+//                inAge++;      //局部内部类使用外部参数时会备份一份到内部来，并且把参数设置成final,不能改变其值
             }
         }
         final class E {
@@ -68,5 +72,19 @@ public class Blocked {
 //        static class I{
 //
 //        }
+    }
+
+    static void testPartParam(Car car){
+
+    }
+
+    public static void main(String[] args) {
+        NeedsCleanup needsCleanup = new NeedsCleanup(1);
+        testPartParam(new Car() {
+            @Override
+            public void testCar(NeedsCleanup needsCleanup, String carName) {
+                System.out.println("======");
+            }
+        });
     }
 }

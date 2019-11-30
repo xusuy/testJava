@@ -57,9 +57,9 @@ public class GenericsTest {
         return o;
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     public void test4() throws NoSuchFieldException, IllegalAccessException {
-        //只要类没有在代码初始化值，即时用final修饰的字段，都能通过放射改变
+        //只要类没有在编译期初始化值，即使使用final修饰的字段，都能通过运行期放射改变
         finalReflectTest1();
         System.out.println("====");
         finalReflectTest2();
@@ -67,6 +67,31 @@ public class GenericsTest {
         finalReflectTest3();
         System.out.println("====");
         finalReflectTest4();
+        System.out.println("====");
+        finalReflectTest5();
+        System.out.println("====");
+        //不能给final static同时修饰的字段 放射赋值：IllegalAccessException
+        finalReflectTest6();
+    }
+
+    private void finalReflectTest6() throws NoSuchFieldException, IllegalAccessException {
+        User user = new User(5);
+        System.out.println("反射之前的phone=" + user.getPhone());
+        Field user_field = User.class.getDeclaredField("phone");
+        user_field.setAccessible(true);
+        user_field.setInt(user, 182);
+        System.out.println("反射后的field,phone=" + user_field.get(user));
+        System.out.println("反射后user,phone=" + user.getPhone());
+    }
+
+    private void finalReflectTest5() throws NoSuchFieldException, IllegalAccessException {
+        User user = new User(5);
+        System.out.println("反射之前的size=" + user.getSize());
+        Field user_field = User.class.getDeclaredField("size");
+        user_field.setAccessible(true);
+        user_field.setInt(user, 30);
+        System.out.println("反射后的field,size=" + user_field.get(user));
+        System.out.println("反射后user,size=" + user.getSize());
     }
 
     public void finalReflectTest1() throws NoSuchFieldException, IllegalAccessException {
@@ -111,7 +136,7 @@ public class GenericsTest {
         List<Integer> li1 = new ArrayList<>();
         //不能创建具体类型的泛型数组,由于类型擦除
 //        List<Integer>[] li2 = new ArrayList<Integer>[8];
-//        List<Boolean> li3 = new ArrayList<Boolean>[8];
+//        List<Boolean>[] li3 = new ArrayList<Boolean>[8];
 
         //可以通过通配符?创建，但是只能读不能写
         List<?>[] li4 = new ArrayList<?>[8];

@@ -10,7 +10,9 @@ public class ValueTest {
     public static void main(String[] args) {
         final Value<String> valueStr = new Value<>();
         final Value<Integer> valueInteger = new Value<>();
+        final Value<Double> doubleValueInteger = new Value<>();
         String orDefault = valueStr.getOrDefault("1", Value.defaultValue());
         Integer orDefault1 = valueInteger.getOrDefault(2, Value.defaultValue());
+        Double orDefault2 = doubleValueInteger.getOrDefault(3.3, Value.defaultValue());
     }
 }

@@ -12,6 +12,10 @@ public class User {
 
     private final String name = "jack";
 
+    private final static int phone = 181;
+
+    private final int size = 20;
+
     public User(int id) {
         this.id = id;
     }
@@ -26,5 +30,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public int getSize() {
+        return size;
     }
 }
