@@ -4,3 +4,4 @@
 
 # Maven
 target/
+/src/main/resources/config.override.dev.properties
