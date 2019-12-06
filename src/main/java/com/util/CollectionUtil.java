@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -170,23 +171,42 @@ public class CollectionUtil {
     @Test
     public void testMap() {
         //HashMap的get()使用key的equals方法取出相应map,重写key的equals方法即可取出map中对应value
-        Map<StudentComparable, Integer> map = new HashMap<>();
-        assemblyMap(map);
-        System.out.println(map.get(new StudentComparable("Michael", 99)));
-        System.out.println(map.get(new StudentComparable("Bob", 88)));
-        System.out.println(map.get(new StudentComparable("Alice", 77)));
+        Map<StudentComparable, Integer> hashMap = new HashMap<>();
+        assemblyMap(hashMap);
+        System.out.println(hashMap.get(new StudentComparable("Michael", 99)));
+        System.out.println(hashMap.get(new StudentComparable("Bob", 88)));
+        System.out.println(hashMap.get(new StudentComparable("Alice", 77)));
         //TreeMap的get()使用key的compareTo方法取出相应map,如compareTo相等即可取出map中对应value
-        map = new TreeMap<>();
-        assemblyMap(map);
-        System.out.println(map.get(new StudentComparable("Michael", 99)));
-        System.out.println(map.get(new StudentComparable("Bob", 88)));
-        System.out.println(map.get(new StudentComparable("Alice", 77)));
+        TreeMap<StudentComparable, Integer> treeMap = new TreeMap<>();
+        assemblyMap(treeMap);
+        System.out.println(treeMap.get(new StudentComparable("Michael", 99)));
+        System.out.println(treeMap.get(new StudentComparable("Bob", 88)));
+        System.out.println(treeMap.get(new StudentComparable("Alice", 77)));
+        //排序
+        System.out.println("treeMap sort======");
+        Collections.synchronizedSortedMap(treeMap).entrySet().forEach(t -> System.out.println(t.getValue()));
     }
 
     //组装map
-    public void assemblyMap(Map<StudentComparable, Integer> map){
+    public void assemblyMap(Map<StudentComparable, Integer> map) {
         map.put(new StudentComparable("Michael", 99), 99);
         map.put(new StudentComparable("Bob", 88), 88);
         map.put(new StudentComparable("Alice", 77), 77);
+    }
+
+    @Test
+    public void testList(){
+        //排序
+        System.out.println("List sort======");
+        List<StudentComparable> studentComparableList = new ArrayList<>();
+        assemblyList(studentComparableList);
+        Collections.sort(studentComparableList, (o1, o2) -> o2.getScore() - o1.getScore());
+        studentComparableList.forEach(s -> System.out.println(s.getScore()));
+    }
+
+    private void assemblyList(List<StudentComparable> studentComparableList) {
+        studentComparableList.add(new StudentComparable("Bob", 88));
+        studentComparableList.add(new StudentComparable("Michael", 99));
+        studentComparableList.add(new StudentComparable("Alice", 77));
     }
 }

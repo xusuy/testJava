@@ -25,9 +25,10 @@ public class StudentComparable implements Comparable<StudentComparable> {
      */
     private int score;
 
+    //升序
 //    @Override
 //    public int compareTo(StudentComparable o) {
-//        return this.score>o.score?1:-1;
+//        return this.score > o.score ? 1 : -1;
 //    }
 
     //如果使用TreeMap集合，需要实现compareTo方法并且自定义返回0才是相同的key
