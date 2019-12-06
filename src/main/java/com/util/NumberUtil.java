@@ -97,6 +97,7 @@ public class NumberUtil {
         System.out.println(NumberUtils.isDigits("12"));
         //是否数字包括小数
         System.out.println(NumberUtils.isNumber("12.0001"));
+        System.out.println(NumberUtils.isNumber("-12.0001"));
         System.out.println(NumberUtils.isNumber("null"));
     }
 

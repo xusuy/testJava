@@ -1,6 +1,8 @@
 package com.util;
 
 
+import com.java8.Streams.group.Student;
+import com.pojo.StudentComparable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /***
@@ -161,5 +164,29 @@ public class CollectionUtil {
             add(2);
         }};
         System.out.println(linkedList);
+    }
+
+    //Map测试
+    @Test
+    public void testMap() {
+        //HashMap的get()使用key的equals方法取出相应map,重写key的equals方法即可取出map中对应value
+        Map<StudentComparable, Integer> map = new HashMap<>();
+        assemblyMap(map);
+        System.out.println(map.get(new StudentComparable("Michael", 99)));
+        System.out.println(map.get(new StudentComparable("Bob", 88)));
+        System.out.println(map.get(new StudentComparable("Alice", 77)));
+        //TreeMap的get()使用key的compareTo方法取出相应map,如compareTo相等即可取出map中对应value
+        map = new TreeMap<>();
+        assemblyMap(map);
+        System.out.println(map.get(new StudentComparable("Michael", 99)));
+        System.out.println(map.get(new StudentComparable("Bob", 88)));
+        System.out.println(map.get(new StudentComparable("Alice", 77)));
+    }
+
+    //组装map
+    public void assemblyMap(Map<StudentComparable, Integer> map){
+        map.put(new StudentComparable("Michael", 99), 99);
+        map.put(new StudentComparable("Bob", 88), 88);
+        map.put(new StudentComparable("Alice", 77), 77);
     }
 }
