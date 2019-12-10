@@ -4,6 +4,7 @@ package com.util;
 import com.java8.Streams.group.Student;
 import com.pojo.StudentComparable;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -195,7 +196,7 @@ public class CollectionUtil {
     }
 
     @Test
-    public void testList(){
+    public void testList() {
         //排序
         System.out.println("List sort======");
         List<StudentComparable> studentComparableList = new ArrayList<>();
@@ -208,5 +209,14 @@ public class CollectionUtil {
         studentComparableList.add(new StudentComparable("Bob", 88));
         studentComparableList.add(new StudentComparable("Michael", 99));
         studentComparableList.add(new StudentComparable("Alice", 77));
+    }
+
+    @Test
+    public void collectionsApi() {
+        //CollectionUtils
+        List<String> strList = new ArrayList<>();
+        Map<String, String> map = new HashMap<>();
+        System.out.println("Collection isEmpty===" + CollectionUtils.isEmpty(strList));
+        System.out.println("Map isEmpty===" + CollectionUtils.isEmpty(map));
     }
 }

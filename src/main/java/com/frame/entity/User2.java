@@ -2,6 +2,7 @@ package com.frame.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * @author xsy
@@ -10,6 +11,7 @@ import lombok.Setter;
  **/
 @Getter
 @Setter
+@Accessors(chain = true)
 public class User2 {
     /**
      *  id

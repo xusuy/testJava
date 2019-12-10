@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -55,7 +56,14 @@ public class AppleService2 {
         sourceApples.sort((o1, o2) -> Float.compare(o1.getWeight(), o2.getWeight()));
         System.out.println("sourceApples lambda sort===" + sourceApples);
         //使用方法引用
-        sourceApples.sort(Comparator.comparing(Apple::getId));
+        sourceApples.sort(Comparator.comparing(Apple::getWeight));
+        //内部类形式
+        sourceApples.sort(Comparator.comparing(new Function<Apple, Float>() {
+            @Override
+            public Float apply(Apple apple) {
+                return apple.getWeight();
+            }
+        }));
         System.out.println("sourceApples 方法引用 sort===" + sourceApples);
     }
 }

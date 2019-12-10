@@ -22,18 +22,21 @@ public class StreamsTest {
     @Test
     public void test() {
         //长度小于5的字符串个数
-        List<String> list = Arrays.asList("java", "scala", "python", "shell", "ruby");
-        long num = list.parallelStream().filter(x -> x.length() < 5).count();
+        List<String> list = Arrays.asList("java", "scala", "python", "shell", "ruby", "scala");
+        long num = list.stream().filter(x -> x.length() < 5).count();
         System.out.println(num);
         //排序
-        Stream<Integer> sortedReverseStreamV2 = Stream.of(1, 3, 7, 4, 5, 8, 6, 2).sorted((Integer o1, Integer o2) -> o2 - o1);
-        sortedReverseStreamV2.collect(Collectors.toList()).forEach(x -> System.out.print(x + " "));
+        Stream<Integer> sortedReverseStreamV2 = Stream.of(1, 3, 7, 4, 5, 8, 6, 2).sorted((o1, o2) -> o2 - o1);
+        List<Integer> integerList = sortedReverseStreamV2.collect(Collectors.toList());
+        integerList.forEach(x -> System.out.print(x + " "));
         System.out.println();
         //distinct去重
         Stream<String> distinctStream = Stream.of("bj", "shanghai", "tianjin", "bj", "shanghai").distinct();
+        List<Object> distinctList = Stream.of(list.toArray()).distinct().collect(Collectors.toList());
+        System.out.println("list distinct去重==" + distinctList);
         Stream<String> sortedStream = distinctStream.sorted(Comparator.comparing(String::length));
         List<String> strList = sortedStream.collect((Collectors.toList()));
-        System.out.println(strList);
+        System.out.println("distinctStream sorted==" + strList);
 
         // 使用sum()计算相应活动任务的总分
         final long totalPointsOfOpenTasks = tasks

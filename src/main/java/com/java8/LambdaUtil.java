@@ -2,9 +2,9 @@ package com.java8;
 
 import org.junit.jupiter.api.Test;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * @author xsy
@@ -116,6 +116,31 @@ public class LambdaUtil {
             @Override
             public void run() {
                 System.out.println("456");
+            }
+        });
+    }
+
+    //测试lambda中的变量
+    @Test
+    public void lambdaVariable() {
+        //引用局部变量，不能改变局部变量
+        String s1 = "s1";
+        int i1 = 1;
+        new Thread(() -> {
+            //Variable 's1' is accessed from within inner class, needs to be final or effectively final
+            //s1 = "s11";
+            String s2 = s1 + "s2";
+            //i1 = 2;
+            int i2 = i1;
+            i2 = i2 + 1;
+        });
+        //在参数中使用的变量i，使用的是变量的副本
+        List<Integer> list1 = Arrays.asList(1, 2, 3);
+        list1.forEach(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer i) {
+                i++;
+                System.out.println(i);
             }
         });
     }
