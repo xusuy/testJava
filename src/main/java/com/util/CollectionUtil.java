@@ -1,7 +1,6 @@
 package com.util;
 
 
-import com.java8.Streams.group.Student;
 import com.pojo.StudentComparable;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.CollectionUtils;
@@ -9,7 +8,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -218,5 +216,11 @@ public class CollectionUtil {
         Map<String, String> map = new HashMap<>();
         System.out.println("Collection isEmpty===" + CollectionUtils.isEmpty(strList));
         System.out.println("Map isEmpty===" + CollectionUtils.isEmpty(map));
+    }
+
+    @Test
+    public void testHashMapApi(){
+        //自定义扩容
+        HashMap<Object, Object> map = new HashMap<>(16);
     }
 }

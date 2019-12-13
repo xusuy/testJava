@@ -18,7 +18,7 @@ public class BitOperation {
         int bit_non = ~a;//按位非操作：取反
         //11111111 11111111 11111111 11111011 =  1011 = -1*(2)的三次幂+0*2的二次幂+1*2的一次幂+1*2的零次幂
         System.out.println(bit_non);
-        int bit_other = a ^ bit_non;//按位异或操作：^ 异或操作符，相同位值为0 否则为1
+        int bit_other = a ^ bit_non;//按位异或操作：^ 异或操作符，相同位值为0 否则为1：如果两个数字的
         System.out.println(bit_other);
     }
 

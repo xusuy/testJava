@@ -1,6 +1,7 @@
 package com.basic;
 
 import com.domain.User;
+import com.java8.Streams.group.Student;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -45,16 +46,32 @@ public class TransmitTest {
         user.setUsername("user2");
     }
 
+    //测试参数传递、赋值
     @Test
-    public void test1() {
+    public void testTransmit() {
         Map map = new HashMap();
         map.put(1, 11);
         test2(map);
-        System.out.println(map);
+        System.out.println("map==" + map);
+
+        String str1 = "s1";
+        testStr(str1);
+        System.out.println("str1==" + str1);
+
+        Student stu1;
+        Student stu2 = null;
+        if ((stu1 = stu2) == null) {
+            stu2 = new Student();
+        }
+        System.out.println("stu1==" + stu1);
     }
 
-    Map test2(Map map) {
+    private void testStr(String str1) {
+        //String中返回了新的对象引用
+        str1.toUpperCase();
+    }
+
+    void test2(Map map) {
         map.put(2, 22);
-        return map;
     }
 }
