@@ -30,12 +30,14 @@ public class StreamsTest {
         List<Integer> integerList = sortedReverseStreamV2.collect(Collectors.toList());
         integerList.forEach(x -> System.out.print(x + " "));
         System.out.println();
+        Integer[] intArray = {1, 3, 7, 4, 5, 8, 6, 2};
+        Stream.of(intArray);
         //distinct去重
-        Stream<String> distinctStream = Stream.of("bj", "shanghai", "tianjin", "bj", "shanghai").distinct();
         List<Object> distinctList = Stream.of(list.toArray()).distinct().collect(Collectors.toList());
         System.out.println("list distinct去重==" + distinctList);
-        Stream<String> sortedStream = distinctStream.sorted(Comparator.comparing(String::length));
-        List<String> strList = sortedStream.collect((Collectors.toList()));
+        List<String> strList = Stream.of("bj", "shanghai", "tianjin", "bj", "shanghai").distinct()
+                .sorted(Comparator.comparing(String::length))
+                .collect((Collectors.toList()));
         System.out.println("distinctStream sorted==" + strList);
 
         // 使用sum()计算相应活动任务的总分

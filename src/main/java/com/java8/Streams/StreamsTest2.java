@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -33,9 +34,9 @@ public class StreamsTest2 {
 
         long start = System.currentTimeMillis();
 
-//        order();
+        multiConditionDistinctOrder();
 //
-//        println(String.format("耗时[%s]毫秒", (System.currentTimeMillis() - start)));
+        println(String.format("耗时[%s]毫秒", (System.currentTimeMillis() - start)));
 
 //        group();
 //        stord();
@@ -45,20 +46,22 @@ public class StreamsTest2 {
 //        summarizingInt();
 //        toSet();
 //        toMap();
-//        map();
+        map();
 //        anyMatch();
         reduce();
     }
 
     /**
-     * 多条件去重
+     * 多条件去重：1、利用TreeSet的Comparator构造器方法，构造不重复的条件；2、利用Function的R apply(T t)转换为ArrayList;
+     * 3、使用Collectors.collectingAndThen完成最终转换
      *
      * @param list
      */
-    public static void order() {
-        list.stream().collect(Collectors.collectingAndThen(
+    public static void multiConditionDistinctOrder() {
+        ArrayList<User> userList = list.stream().collect(Collectors.collectingAndThen(
                 Collectors.toCollection(() -> new TreeSet<>(
-                        Comparator.comparing(o -> o.getAge() + ";" + o.getName()))), ArrayList::new)).forEach(u -> println(u));
+                        Comparator.comparing(o -> o.getAge() + ";" + o.getName()))), ArrayList::new));
+        userList.forEach(u -> println(u));
     }
 
     public static void group() {
