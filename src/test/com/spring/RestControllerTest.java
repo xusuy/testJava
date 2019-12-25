@@ -125,4 +125,8 @@ public class RestControllerTest {
         Assert.assertNotNull("account is null!", account);
     }
 
+    @Test
+    public void testWxPushTemplate() {
+
+    }
 }

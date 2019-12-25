@@ -15,7 +15,8 @@ public class JacksonUtilTest {
         //json转实体
         String car_json = "{\"name\":\"test\",\"code\":\"001\"}";
         CarInfo carInfo = JacksonUtil.readValue(car_json, CarInfo.class);
-        System.out.println("转化为实体bean:\n" + carInfo);
+        System.out.println(String.format("转化为实体bean:\n%s", carInfo));
+        carInfo.setCarOwer("大王");
         System.out.println("javabean转化为json:\n" + JacksonUtil.toJSon(carInfo));
 
         Map map = JacksonUtil.readValue(car_json, Map.class);
