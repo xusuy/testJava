@@ -25,7 +25,7 @@ public class WxPushMessageUtilTest {
                 keyword4, remark, openid, "");
         String accessToken = "15_-TpOhxEkOFBbn8ZMjEawNha9uVhuslthzUZ8_In7eKq7XYlY269GAxnDdl3rvVeYCQKbSdaf-P1FqYvjDOCy2O4ZWkzYwbjrZxUK1aygQl7J_qYa9X4YWqUq_XU3lzVcFZ4hhk2Y1_Mt6A9_EOFdAHAJTK";
         String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN".replace("ACCESS_TOKEN", accessToken);
-        String paramJson = JacksonUtil.toJSon(templateMsg);
+        String paramJson = JacksonJsonUtil.toJSon(templateMsg);
         String postResponse = HttpClientUtils.sendPost(url, paramJson);
         if (StringUtils.isNotEmpty(postResponse) && postResponse.indexOf("\"ok\"") > 0) {
             logger.info(postResponse);

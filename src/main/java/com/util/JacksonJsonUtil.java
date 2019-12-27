@@ -3,7 +3,7 @@ package com.util;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
-public class JacksonUtil {
+public class JacksonJsonUtil {
     public static ObjectMapper objectMapper;
 
     /**
@@ -17,36 +17,36 @@ public class JacksonUtil {
      * @return
      */
     public static <T> T readValue(String jsonStr, Class<T> valueType) {
-        if (objectMapper == null) {
-            objectMapper = new ObjectMapper();
+            if (objectMapper == null) {
+                objectMapper = new ObjectMapper();
+            }
+
+            try {
+                return objectMapper.readValue(jsonStr, valueType);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
         }
 
-        try {
-            return objectMapper.readValue(jsonStr, valueType);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        /**
+         * json数组转List
+         *
+         * @param jsonStr
+         * @param valueTypeRef
+         * @return
+         */
+        public static <T> T readValue(String jsonStr, TypeReference<T> valueTypeRef) {
+            if (objectMapper == null) {
+                objectMapper = new ObjectMapper();
+            }
 
-        return null;
-    }
-
-    /**
-     * json数组转List
-     *
-     * @param jsonStr
-     * @param valueTypeRef
-     * @return
-     */
-    public static <T> T readValue(String jsonStr, TypeReference<T> valueTypeRef) {
-        if (objectMapper == null) {
-            objectMapper = new ObjectMapper();
-        }
-
-        try {
-            return objectMapper.readValue(jsonStr, valueTypeRef);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            try {
+                return objectMapper.readValue(jsonStr, valueTypeRef);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         return null;
     }
