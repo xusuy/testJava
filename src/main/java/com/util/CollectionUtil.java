@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -121,7 +122,7 @@ public class CollectionUtil {
 //                map.remove(m.getKey());
 //            }
 //        });
-        //ConcurrentModificationException
+        //ConcurrentModificationException);
 //        for (Map.Entry<String, Object> m : map.entrySet()) {
 //            if (Objects.equals("name", m.getKey())) {
 //                map.remove(m.getKey());
@@ -131,6 +132,8 @@ public class CollectionUtil {
 //        map.remove("name");
         map.forEach((key, value) -> System.out.println(key + ":" + value));
         map.entrySet().forEach(m -> System.out.println(m.getKey() + ":" + m.getValue()));
+        Set<Map.Entry<String, Object>> entries = map.entrySet();
+        entries.iterator().next();
 
         List<String> strList1 = new ArrayList<String>() {{
             add("1");
@@ -219,8 +222,23 @@ public class CollectionUtil {
     }
 
     @Test
-    public void testHashMapApi(){
+    public void testHashMapApi() {
         //自定义扩容
         HashMap<Object, Object> map = new HashMap<>(16);
+        System.out.println("两倍幂：" + tableSizeFor(10));
+    }
+
+    /**
+     * 返回给定目标容量的两倍幂(来自于HashMap)
+     */
+    static final int tableSizeFor(int cap) {
+        int MAXIMUM_CAPACITY = 1 << 30;
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 }

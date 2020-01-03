@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -60,10 +61,10 @@ public class GroupingDateTest {
                                 Collectors.toSet())));
         nodeExecutorMap.entrySet().forEach(e -> System.out.println("key=" + e.getKey() + "；value=" + e.getValue()));
         //排序
-//        Map<String, Set<List<ZtreeModel>>> nodeExecutorSortMap = new LinkedHashMap<>();
-//        nodeExecutorMap.entrySet().stream().sorted(Map.Entry.comparingByKey()).
-//                forEachOrdered(x -> nodeExecutorSortMap.put(x.getKey(), x.getValue()));
-//        nodeExecutorSortMap.entrySet().forEach(e -> System.out.println("key=" + e.getKey() + "；value=" + e.getValue()));
+        Map<String, Set<List<ZtreeModel>>> nodeExecutorSortMap = new LinkedHashMap<>();
+        nodeExecutorMap.entrySet().stream().sorted(Map.Entry.comparingByKey()).
+                forEachOrdered(x -> nodeExecutorSortMap.put(x.getKey(), x.getValue()));
+        nodeExecutorSortMap.entrySet().forEach(e -> System.out.println("key=" + e.getKey() + "；value=" + e.getValue()));
 
         //按日期分组
         Map<String, List<FlowNodeExecutor>> flowNodeMap = flowNodeExecutorList.stream().collect(Collectors.groupingBy(

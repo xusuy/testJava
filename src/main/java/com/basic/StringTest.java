@@ -33,7 +33,7 @@ public class StringTest {
         //  正则表达式中也用\表示转义。\在正则表示式中也作为转义字符使用，所以在正则表达式中"\\\\"才表示一个反斜杠，即"\"
         //  对于replaceFirst和replaceAll中的replacement，如果其中包含\的话，将作为转义字符看待
         // replace和replaceAll都是全部替换，replaceAll,replaceFirst用正则
-        System.out.println( "\\" );
+        System.out.println("\\");
         System.out.println("aaa".replace("a", "\\."));
         System.out.println("aaa".replace("a", "\\\\."));
         System.out.println("aaa".replaceAll("a", "\\."));
@@ -230,5 +230,11 @@ public class StringTest {
             str = "str";
         }
         System.out.println(str);
+    }
+
+    @Test
+    public void test11() {
+        String str1 = "{\"errcode\":40003,\"errmsg\":\"invalid openid hint: [1WY1bA05334100]\"}";
+        System.out.println(str1.indexOf("\"ok\""));
     }
 }
