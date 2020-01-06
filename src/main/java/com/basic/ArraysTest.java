@@ -2,6 +2,7 @@ package com.basic;
 
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,5 +39,42 @@ public class ArraysTest {
         tdArray3[0][1] = 111;
         tdArray3[0][5] = 222;
         tdArray3[1][7] = 333;
+    }
+
+    @Test
+    public void testArray() {
+        Class clazz = String.class;
+
+        //创建一个长度为10的字符串数组，在Java中数组也可以作为Object对象
+        Object array = Array.newInstance(clazz, 10);
+
+        //把字符串数组对象的索引位置为5的元素设置为"hello"
+        Array.set(array, 5, "hello");
+
+        //获得字符串数组对象的索引位置为5的元素的值
+        String str = (String) Array.get(array, 5);
+        System.out.println(str);//hello
+    }
+
+    /**
+     * 动态修改数组(Array)的大小
+     *
+     * @param oldArray 老数组
+     * @param newSize  新长度
+     * @return
+     */
+    private static Object resizeArray(Object oldArray, int newSize) {
+        //老数组的长度
+        int oldSize = Array.getLength(oldArray);
+        //数组类型
+        Class elementType = oldArray.getClass().getComponentType();
+        //一个新的数组 类型和oldArray的一样 长度newSize
+        //Array.newInstance返回的是elementType的数组，可以通过类型转换为elementType数组
+        Object newArray = Array.newInstance(
+                elementType, newSize);
+        int preserveLength = Math.min(oldSize, newSize);
+        if (preserveLength > 0)
+            System.arraycopy(oldArray, 0, newArray, 0, preserveLength);
+        return newArray;
     }
 }
