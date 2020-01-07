@@ -3,6 +3,7 @@ package com.basic;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 /**
  * @author xsy
@@ -49,6 +50,10 @@ public class ClassTest {
     }
 
     class ClassTestSub {//成员内部类
+
+//        public static class Sub extends ArrayList {//Inner classes cannot have static declarations
+//
+//        }
 
         public void main(String[] args) {//内部类 不能有静态的定义；可以直接访问外部类的成员和静态内容
             main(new String[]{"1"});

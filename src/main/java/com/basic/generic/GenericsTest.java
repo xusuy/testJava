@@ -112,7 +112,7 @@ public class GenericsTest {
         System.out.println("反射后user,id=" + user.getId());
     }
 
-    public void finalReflectTest3() throws NoSuchFieldException, IllegalAccessException{
+    public void finalReflectTest3() throws NoSuchFieldException, IllegalAccessException {
         User user = new User(5);
         System.out.println("反射之前的age=" + user.getAge());
         Field user_field = User.class.getDeclaredField("age");
@@ -122,17 +122,17 @@ public class GenericsTest {
         System.out.println("反射后user,age=" + user.getAge());
     }
 
-    public void finalReflectTest4() throws NoSuchFieldException, IllegalAccessException{
+    public void finalReflectTest4() throws NoSuchFieldException, IllegalAccessException {
         User user = new User(5);
         System.out.println("反射之前的name=" + user.getName());
         Field user_field = User.class.getDeclaredField("name");
         user_field.setAccessible(true);
-        user_field.set(user,"rose");
+        user_field.set(user, "rose");
         System.out.println("反射后的field,name=" + user_field.get(user));
         System.out.println("反射后user,name=" + user.getName());
     }
 
-    public static void  test5(){
+    public static void test5() {
         List<Integer> li1 = new ArrayList<>();
         //不能创建具体类型的泛型数组,由于类型擦除
 //        List<Integer>[] li2 = new ArrayList<Integer>[8];
@@ -202,5 +202,4 @@ public class GenericsTest {
         String test3 = (String) test3("test3");
         Integer integer_3 = (Integer) test3(3);
     }
-
 }
