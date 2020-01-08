@@ -71,6 +71,7 @@ public class CollectionUtil {
         idList.add("1");
         idList.add("2");
         fileMap.put("customFiles", idList);
+        idList.contains("1");
         List<String> customFileIdList = (List<String>) fileMap.get("customFiles");
         System.out.println(customFileIdList);
     }

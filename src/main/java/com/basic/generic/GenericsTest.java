@@ -36,8 +36,13 @@ public class GenericsTest {
         int size = collection.size();
 
         List<?> wildlist = new ArrayList<String>();
-//        wildlist.add(123);// 编译不通过
+//        wildlist.add("123");// 编译不通过
         int size1 = wildlist.size();
+        List<? extends User> userList1 = new ArrayList<UserImpl>();
+//        userList1.add(new UserImpl(1));// 编译不通过
+
+        List<? super User> userList2 = new ArrayList<>();
+        userList2.add(new UserImpl(1));
 
         List<Object> objectList = new ArrayList<>();
         objectList.add("3");
@@ -71,7 +76,7 @@ public class GenericsTest {
         finalReflectTest5();
         System.out.println("====");
         //不能给final static同时修饰的字段 放射赋值：IllegalAccessException
-        finalReflectTest6();
+//        finalReflectTest6();
     }
 
     private void finalReflectTest6() throws NoSuchFieldException, IllegalAccessException {
