@@ -48,25 +48,37 @@ public class NumberUtil {
     }
 
     @Test
-    public void test1() {
+    public void testjjjj() {
         int a = 0;
         int b = a++;
+        System.out.println(b);//0
+        System.out.println(a);//1
         int c = ++a;
-        System.out.println(b + "");//0
-        System.out.println(c + "");//2
+        System.out.println(c);//2
 
-//        int d = 5;
-////        while (true) {
-////            if (d-- > 0) {//先返回值比较>0后运算
-////                System.out.print(d);//43210
-////            }else return;
-////        }
-        int f = 5;
+        System.out.print("j--：");
+        for (int j = 5; j > 0; j--) {
+            System.out.print(j);//54321
+        }
+        System.out.println();
+        System.out.print("--j：");
+        for (int j = 5; j > 0; --j) {
+            System.out.print(j);//54321
+        }
+        System.out.println();
+        int d = 5;
         while (true) {
-            if (--f > 0) {//先运算比较>0后返回值
-                System.out.print(f);//4321
+            if (d-- > 0) {//先比较>0后运算
+                System.out.print(d);//43210
             } else return;
         }
+
+//        int f = 5;
+//        while (true) {
+//            if (--f > 0) {//先运算后比较>0
+//                System.out.print(f);//4321
+//            } else return;
+//        }
     }
 
     @Test
@@ -127,7 +139,7 @@ public class NumberUtil {
         String s1 = "+12.9";
         System.out.println(Double.valueOf(s1));
         String dataValue = (null + "").replace("+", "");
-        Double d2 = NumberUtils.isNumber(dataValue) ? Double.valueOf(dataValue): null;
+        Double d2 = NumberUtils.isNumber(dataValue) ? Double.valueOf(dataValue) : null;
         System.out.println(d2);
     }
 }

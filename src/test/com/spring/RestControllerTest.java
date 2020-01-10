@@ -58,9 +58,12 @@ public class RestControllerTest {
     @Test
     public void testRestGet2() {
         //PathVariable
-        String id = "2";
-        ResponseEntity<Account> accountResponseEntity = restTemplate.getForEntity("http://localhost:8080/test/getAccountById?id={id}", Account.class, id);
+//        String id = "2";
+//        ResponseEntity<Account> accountResponseEntity = restTemplate.getForEntity("http://localhost:8080/test/getAccountById?id={id}", Account.class, id);
+        String idCard = "210203197503102000";
+        ResponseEntity<String> accountResponseEntity = restTemplate.getForEntity("https://weixin-proxy.ywsoftware.com/qxy-api/ext/getInsurMember/{idCard}", String.class, idCard);
         Assert.assertNotNull("accountResponseEntity is null!", accountResponseEntity);
+        System.out.println(accountResponseEntity.getBody());
     }
 
     @Test

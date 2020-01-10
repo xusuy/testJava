@@ -19,12 +19,7 @@ public class UriComponentsBuildUtil {
                 .queryParam("q", "springboot")
                 .build();
         System.out.println(build1.toString());
-
-        try {
-            build1.encode("utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        build1.encode();
         System.out.println(build1.toString());
 
         UriComponents uriComponents = UriComponentsBuilder.newInstance()

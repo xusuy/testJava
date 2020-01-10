@@ -8,6 +8,7 @@ import com.frame.model.UserModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -22,6 +23,7 @@ import java.util.List;
  * @create 2019-12-27 17:33
  * @desc 配置
  **/
+@Configuration
 public class FrameConfig {
 
     //model直接转换
@@ -42,6 +44,7 @@ public class FrameConfig {
 
     /**
      * 为了使post方法，String参数使用的StringHttpMessageConverter，从默认的ISO-8859-1转为utf-8编码
+     *
      * @return
      */
     @Bean
@@ -58,19 +61,24 @@ public class FrameConfig {
     }
 
     @Bean
+    Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
+        return new Jackson2ObjectMapperBuilder();
+    }
+
+    @Bean
     @Primary
-    @Qualifier("xml")
+    @Qualifier("xmlMapper")
     public XmlMapper xmlMapper(Jackson2ObjectMapperBuilder builder) {
         XmlMapper mapper = builder.createXmlMapper(true)
                 .build();
-        //美工输出
+        //美工输出NumberUtils
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         return mapper;
     }
 
     @Bean
-    @Qualifier("json")
+    @Qualifier("jsonMapper")
     public ObjectMapper jsonMapper(Jackson2ObjectMapperBuilder builder) {
         ObjectMapper mapper = builder.createXmlMapper(false)
                 .build();
