@@ -1,5 +1,7 @@
 package com.pojo;
 
+import com.google.common.collect.ComparisonChain;
+import com.google.common.collect.Ordering;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,10 +34,26 @@ public class StudentComparable implements Comparable<StudentComparable> {
 //    }
 
     //如果使用TreeMap集合，需要实现compareTo方法并且自定义返回0才是相同的key
+//    @Override
+//    public int compareTo(StudentComparable o) {
+//        int compareInt = Integer.compare(this.score, o.score);
+//        return compareInt != 0 ? compareInt : this.name.compareTo(o.name);
+//    }
+
+    //采用google的guava ComparisonChain：执行一种懒比较：它执行比较操作直至发现非零的结果，在那之后的比较输入将被忽略。
     @Override
-    public int compareTo(StudentComparable o) {
-        int compareInt = Integer.compare(this.score, o.score);
-        return compareInt != 0 ? compareInt : this.name.compareTo(o.name);
+    public int compareTo(StudentComparable that) {
+
+        return ComparisonChain.start()
+
+                .compare(this.score, that.score)
+
+                .compare(this.name, that.name)
+
+//                .compare(this.anEnum, that.anEnum, Ordering.natural().nullsLast())
+
+                .result();
+
     }
 
     @Override

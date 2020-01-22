@@ -15,21 +15,28 @@ import java.util.function.Supplier;
  * @desc java8 Optional
  **/
 public class OptionalTest {
-
     @Test
-    public void test() throws Throwable {
+    public void testNull() {
+        //测试null
         String str1 = null;
         String str2 = "123";
         //获取字符串长度
-        System.out.println(Optional.ofNullable(str2).map(String::length).orElse(0));
-        //
+        //ofNullable可以是null
+        System.out.println(Optional.ofNullable(str1).map(String::length).orElse(0));
+        //of不能是null
+        String is_null = Optional.of(str1).orElse("is null");
+        System.out.println("is_null：" + is_null);
+    }
+
+    @Test
+    public void test() throws Throwable {
         List<User2> userList = new ArrayList<User2>() {{
             add(new User2().setName("jack").setId("1"));
             add(new User2().setName("roce").setId("2"));
         }};
         //不满足条件时返回异常
         //User2 user = userList.stream().filter(u -> Objects.equals("jack1", u.getName())).findAny().orElseThrow(() -> new RuntimeException());
-        Optional<User2> userv = userList.stream().filter(u -> Objects.equals("jack", u.getName())).findAny();
+        Optional<User2> userv = userList.stream().filter(u -> Objects.equals("jack", u.getName())).findFirst();
         //当满足条件时执行传入的参数化操作
         userv.ifPresent(u -> {
             System.out.println(u.getId() + "：" + u.getName());

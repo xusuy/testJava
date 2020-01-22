@@ -1,6 +1,7 @@
 package com.basic;
 
 import com.frame.entity.Account;
+import com.google.common.base.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -234,7 +235,7 @@ public class StringTest {
 
     @Test
     public void test11() {
-        String str1 = "{\"errcode\":40003,\"errmsg\":\"invalid openid hint: [1WY1bA05334100]\"}";
-        System.out.println(str1.indexOf("\"ok\""));
+        String toString = Objects.toStringHelper(this).add("age", 18).add("name", "jack").toString();
+        System.out.println(toString);
     }
 }

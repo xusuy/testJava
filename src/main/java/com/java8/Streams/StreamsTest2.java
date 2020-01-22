@@ -1,5 +1,7 @@
 package com.java8.Streams;
 
+import com.google.common.base.Objects;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -231,7 +233,8 @@ public class StreamsTest2 {
 
         @Override
         public String toString() {
-            return "[userId=" + userId + ", name=" + name + ", age=" + age + "]";
+//            return "[userId=" + userId + ", name=" + name + ", age=" + age + "]";
+            return Objects.toStringHelper(this).add("userId", userId).add("name", name).add("age", age).toString();
         }
 
     }
