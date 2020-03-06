@@ -25,6 +25,9 @@ public class StreamsTest {
         List<String> list = Arrays.asList("java", "scala", "python", "shell", "ruby", "scala");
         long num = list.stream().filter(x -> x.length() < 5).count();
         System.out.println(num);
+        //添加前缀和后缀
+        String joinStr = list.stream().collect(Collectors.joining("', '", "'", "'"));
+        System.out.println("添加前缀和后缀==" + joinStr);
         //排序
         Stream<Integer> sortedReverseStreamV2 = Stream.of(1, 3, 7, 4, 5, 8, 6, 2).sorted((o1, o2) -> o2 - o1);
         List<Integer> integerList = sortedReverseStreamV2.collect(Collectors.toList());

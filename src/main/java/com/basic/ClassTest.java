@@ -44,23 +44,35 @@ public class ClassTest {
     }
 
     static void f1() {
+        //'com.basic.ClassTest.this' cannot be referenced from a static context
+//        ClassTestSub classTestSub = new ClassTestSub();
+//        classTestSub.f3();
     }
 
     void f2() {
+        ClassTestSub classTestSub = new ClassTestSub();
+        classTestSub.f3();
     }
 
     class ClassTestSub {//成员内部类
 
-//        public static class Sub extends ArrayList {//Inner classes cannot have static declarations
+//        public static void staticMethod() {//Inner classes cannot have static declarations
 //
 //        }
 
-        public void main(String[] args) {//内部类 不能有静态的定义；可以直接访问外部类的成员和静态内容
-            main(new String[]{"1"});
+        private void f3() {
+            //在同一个public类下 只要不是在静态上下文里都可以直接创建成员内部类，不需要显示创建外部类对象
+            ClassTestSub classTestSub = new ClassTestSub();
+            classTestSub.f3();
+        }
+
+        public void test() {//内部类 不能有静态的定义；可以直接访问外部类的成员和静态内容
+            f3();
             f1();
             f2();
             System.out.println(i);
             System.out.println(str);
+            new ClassTestSubStatic().f4();//可以直接创建静态内部类对象，不需要外部类对象
         }
 
     }
@@ -68,11 +80,19 @@ public class ClassTest {
     static class ClassTestSubStatic {//静态内部类
 
         public static void main(String[] args) {
+            //访问成员内部类需要使用外部类对象(在静态上下文里)
+            ClassTest classTest = new ClassTest();
+            ClassTestSub classTestSub = classTest.new ClassTestSub();
+            //同一个public类下可以访问私有方法
+            classTestSub.f3();
 
+            //'com.basic.ClassTest.this' cannot be referenced from a static context
+//            ClassTestSub classTestSub1 = new ClassTestSub();
+//            classTestSub1.f3();
         }
 
-        void f3() {//静态内部类不能访问外部的成员
-//            f2();
+        void f4() {
+//            f2();//静态内部类不能直接访问外部的成员
             f1();
         }
     }

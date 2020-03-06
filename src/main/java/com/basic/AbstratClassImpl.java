@@ -28,4 +28,13 @@ public class AbstratClassImpl extends AbstratClass {
     public void test(){
         t2();
     }
+
+    public void testInnerClassMethod(){
+        //外部 引用ClassTest的成员内部类需要ClassTest对象
+//        ClassTest.ClassTestSub classTestSub1 = new ClassTest.ClassTestSub();
+        ClassTest classTest = new ClassTest();
+        ClassTest.ClassTestSub classTestSub2 = classTest.new ClassTestSub();
+        //不能访问私有方法
+//        classTestSub.f3();
+    }
 }
