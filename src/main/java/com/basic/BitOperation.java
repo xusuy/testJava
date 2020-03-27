@@ -39,4 +39,14 @@ public class BitOperation {
         int i = 013 * 014;
         System.out.println(i);
     }
+
+    @Test
+    void test2() {
+        //高16位和低16位异或运算
+        int h, rightMove;
+        String str = "test";
+        System.out.println("test 的hash==" + (h = str.hashCode()));
+        System.out.println("h无符号位右移16位==" + (rightMove = h >>> 16));
+        System.out.println(h ^ rightMove);
+    }
 }

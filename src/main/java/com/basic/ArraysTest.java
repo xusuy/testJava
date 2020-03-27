@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -13,6 +14,9 @@ import java.util.List;
  * @desc Arrays测试
  **/
 public class ArraysTest {
+    private Object[] objArray;
+    private Object[] emptyArray = {};
+
     public static void main(String[] args) {
         Integer one = new Integer(1);
         Integer two = new Integer(2);
@@ -76,5 +80,26 @@ public class ArraysTest {
         if (preserveLength > 0)
             System.arraycopy(oldArray, 0, newArray, 0, preserveLength);
         return newArray;
+    }
+
+    @Test
+    public void testArrayObject() {
+        System.out.println(objArray == emptyArray);
+    }
+
+    @Test
+    public void testArrayList() {
+        //java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+        List<Integer> intList = new ArrayList<>(8);
+        intList.set(0, 166);
+    }
+
+    @Test
+    public void testArraySort() {
+        Integer[] intArray = {1, 2};
+        Arrays.sort(intArray, (o1, o2) -> o2 - o1);
+        for (Integer integer : intArray) {
+            System.out.println(integer);
+        }
     }
 }

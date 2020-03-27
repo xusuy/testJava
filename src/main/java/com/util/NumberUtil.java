@@ -130,6 +130,9 @@ public class NumberUtil {
         System.out.println(b);
         double c = a + 3 / 2;
         System.out.println(c);
+        float f1 = 0.75f;
+        int int1 = (int) (f1 * 16);
+        System.out.println(int1);
     }
 
     @Test
@@ -141,5 +144,13 @@ public class NumberUtil {
         String dataValue = (null + "").replace("+", "");
         Double d2 = NumberUtils.isNumber(dataValue) ? Double.valueOf(dataValue) : null;
         System.out.println(d2);
+    }
+
+    @Test
+    public void whileTest() {
+        //会先做一次do
+        do {
+            System.out.println(123);
+        } while (1 > 2);
     }
 }

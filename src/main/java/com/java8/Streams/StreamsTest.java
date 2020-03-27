@@ -33,6 +33,14 @@ public class StreamsTest {
         List<Integer> integerList = sortedReverseStreamV2.collect(Collectors.toList());
         integerList.forEach(x -> System.out.print(x + " "));
         System.out.println();
+        System.out.println("===");
+        Arrays.asList(1, 2, null, 4).forEach(x -> {
+            if (x == null) {
+                return;//return 在这相当于continue作用
+            }
+            System.out.print(x + " ");
+        });
+        System.out.println();
         Integer[] intArray = {1, 3, 7, 4, 5, 8, 6, 2};
         Stream.of(intArray);
         //distinct去重

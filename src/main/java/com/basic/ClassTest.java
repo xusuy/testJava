@@ -52,16 +52,18 @@ public class ClassTest {
     void f2() {
         ClassTestSub classTestSub = new ClassTestSub();
         classTestSub.f3();
+        classTestSub.a++;
     }
 
     class ClassTestSub {//成员内部类
+        private int a;
 
 //        public static void staticMethod() {//Inner classes cannot have static declarations
 //
 //        }
 
         private void f3() {
-            //在同一个public类下 只要不是在静态上下文里都可以直接创建成员内部类，不需要显示创建外部类对象
+            //在同一个public类下 只要不是在静态上下文里都可以直接创建成员内部类，不需要显示创建外部类对象.因为
             ClassTestSub classTestSub = new ClassTestSub();
             classTestSub.f3();
         }
@@ -85,7 +87,7 @@ public class ClassTest {
             ClassTestSub classTestSub = classTest.new ClassTestSub();
             //同一个public类下可以访问私有方法
             classTestSub.f3();
-
+//            this.getClass();
             //'com.basic.ClassTest.this' cannot be referenced from a static context
 //            ClassTestSub classTestSub1 = new ClassTestSub();
 //            classTestSub1.f3();
@@ -94,6 +96,8 @@ public class ClassTest {
         void f4() {
 //            f2();//静态内部类不能直接访问外部的成员
             f1();
+            this.getClass();
+//            ClassTestSub classTestSub1 = new ClassTestSub();
         }
     }
 
