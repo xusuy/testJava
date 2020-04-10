@@ -13,7 +13,7 @@ import java.util.Map;
  * @desc
  **/
 public class ListUtil {
-    //重组文件名：如有多个同样的文件名，则添加后缀_1,_2...
+    //重组文件名：如有多个同样的文件名，则添加后缀_1,_2...(bug:不能在同名文件中已存在有后缀的文件)
     private List<Map<String, String>> restructuringFileName(List<Map<String, String>> fileList) {
         List<Map<String, String>> newList = new ArrayList<>();
         Map<String, Integer> statisticsMap = new HashMap<>();
@@ -65,7 +65,7 @@ public class ListUtil {
         map6.put("fileName", "e.jpg");
         Map<String, String> map7 = new HashMap<>();
         map7.put("url", "https//www.ac.jpg");
-        map7.put("fileName", "a.jpg");
+        map7.put("fileName", "a__2.jpg");
         List<Map<String, String>> fileList = new ArrayList<>();
         fileList.add(map1);
         fileList.add(map2);
