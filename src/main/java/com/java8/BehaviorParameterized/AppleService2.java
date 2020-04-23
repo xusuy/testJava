@@ -50,6 +50,7 @@ public class AppleService2 {
         System.out.println(getFilterApplesByPredicate(intList, integer -> integer % 2 == 0));
     }
 
+    //测试排序
     @Test
     public void test2() {
         //使用lambda

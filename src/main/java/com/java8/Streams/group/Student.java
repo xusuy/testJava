@@ -10,6 +10,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
+ * 分组并排序
+ *
  * @author xsy
  * @desc：按两个属性拼接进行分组，去除最大的组内成员
  **/
@@ -34,26 +36,26 @@ class GetTrueStudent {
         Student st1 = new Student();
         st1.setAge(20);
         st1.setHight(178L);
-        st1.setSex(1);
+        st1.setSex(2);
         st1.setName("韩梅梅");
         allList.add(st1);
         Student st11 = new Student();
-        st11.setAge(20);
-        st11.setHight(168L);
-        st11.setSex(1);
+        st11.setAge(19);
+        st11.setHight(190L);
+        st11.setSex(2);
         st11.setName("马冬梅");
         allList.add(st11);
 
         Student st2 = new Student();
         st2.setAge(21);
         st2.setHight(179L);
-        st2.setSex(2);
+        st2.setSex(1);
         st2.setName("李磊");
         allList.add(st2);
         Student st22 = new Student();
-        st22.setAge(21);
+        st22.setAge(20);
         st22.setHight(189L);
-        st22.setSex(2);
+        st22.setSex(1);
         st22.setName("小李");
         allList.add(st22);
 

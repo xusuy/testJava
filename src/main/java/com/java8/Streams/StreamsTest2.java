@@ -36,21 +36,21 @@ public class StreamsTest2 {
 
         long start = System.currentTimeMillis();
 
-        multiConditionDistinctOrder();
+//        multiConditionDistinctOrder();
 //
         println(String.format("耗时[%s]毫秒", (System.currentTimeMillis() - start)));
 
 //        group();
-//        stord();
+        stord();
 //        limit();
 //        skip();
 //        statistics();
 //        summarizingInt();
 //        toSet();
 //        toMap();
-        map();
+//        map();
 //        anyMatch();
-        reduce();
+//        reduce();
     }
 
     /**
@@ -152,7 +152,7 @@ public class StreamsTest2 {
      * map
      */
     public static void map() {
-        list.stream().map(User::getUserId).forEach(userId -> println(userId));
+        list.stream().map(user -> user.getUserId()).forEach(userId -> println(userId));
         list.stream().mapToInt(User::getAge).forEach(userId -> println(userId));
         list.stream().mapToDouble(User::getUserId).forEach(userId -> println(userId));
         list.stream().mapToLong(User::getUserId).forEach(userId -> println(userId));

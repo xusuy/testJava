@@ -11,7 +11,7 @@ public class BubbleSort {
         long tmp = 0;
         for (int i = 0; i < arr.length - 1; i++) {//冒泡次数
             for (int j = 0; j < arr.length - 1 - i; j++) {//比较的次数
-                if (arr[j] > arr[j + 1]) {//假如前面的元素小于后面的元素 调换位置
+                if (arr[j] > arr[j + 1]) {//假如前面的元素大于后面的元素 调换位置
                     tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;

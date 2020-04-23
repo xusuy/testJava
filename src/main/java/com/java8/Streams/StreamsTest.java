@@ -27,10 +27,11 @@ public class StreamsTest {
         System.out.println(num);
         //添加前缀和后缀
         String joinStr = list.stream().collect(Collectors.joining("', '", "'", "'"));
-        System.out.println("添加前缀和后缀==" + joinStr);
+        String joinStr2 = list.stream().collect(Collectors.joining("\"], [\"", "[\"", "\"]"));
+        System.out.println("添加前缀和后缀1==" + joinStr);
+        System.out.println("添加前缀和后缀2==" + joinStr2);
         //排序
-        Stream<Integer> sortedReverseStreamV2 = Stream.of(1, 3, 7, 4, 5, 8, 6, 2).sorted((o1, o2) -> o2 - o1);
-        List<Integer> integerList = sortedReverseStreamV2.collect(Collectors.toList());
+        List<Integer> integerList = Stream.of(1, 3, 7, 4, 5, 8, 6, 2).sorted((o1, o2) -> o2 - o1).collect(Collectors.toList());
         integerList.forEach(x -> System.out.print(x + " "));
         System.out.println();
         System.out.println("===");
@@ -49,7 +50,7 @@ public class StreamsTest {
         List<String> strList = Stream.of("bj", "shanghai", "tianjin", "bj", "shanghai").distinct()
                 .sorted(Comparator.comparing(String::length))
                 .collect((Collectors.toList()));
-        System.out.println("distinctStream sorted==" + strList);
+        System.out.println("通过字符串长度排序==" + strList);
 
         // 使用sum()计算相应活动任务的总分
         final long totalPointsOfOpenTasks = tasks
