@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /***
@@ -241,5 +242,40 @@ public class CollectionUtil {
         n |= n >>> 8;
         n |= n >>> 16;
         return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    }
+
+    @Test
+    public long testBigData() {
+        long time1 = System.currentTimeMillis();
+        long total = 0;
+        for (int i = 1; i < 1000000; i++) {
+            total += total;
+        }
+//        System.out.println(String.format("total=%s,花费时间=%s", total, (System.currentTimeMillis() - time1)));
+        System.out.println("total=" + total + ";花费时间=" + (System.currentTimeMillis() - time1));
+        return total;
+    }
+
+    @Test
+    public void testThreadLocalMapHash() {
+        int HASH_INCREMENT = 0x61c88647;
+        int INITIAL_CAPACITY = 16;
+        AtomicInteger nextHashCode = new AtomicInteger();
+        int threadLocalHashCode = nextHashCode.addAndGet(HASH_INCREMENT);
+        int i = threadLocalHashCode & (INITIAL_CAPACITY - 1);
+        System.out.println(i);
+    }
+
+    @Test
+    public void testMapEquals() {
+        HashMap<String, String> map1 = new HashMap<String, String>() {{
+            put("name", "jack");
+            put("like", "game");
+        }};
+        HashMap<String, String> map2 = new HashMap<String, String>() {{
+            put("name", "jack");
+            put("like", "game");
+        }};
+        System.out.println(map1.equals(map2));
     }
 }

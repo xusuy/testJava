@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author xsy
@@ -155,14 +156,20 @@ public class NumberUtil {
     }
 
     @Test
-    public void testZero(){
+    public void testZero() {
         //一个double数/0或者/0.0是一个无穷数
-        System.out.println(1.0/0);
-        System.out.println(1.0/0.0);
-        System.out.println(1.0/1);
+        System.out.println(1.0 / 0);
+        System.out.println(1.0 / 0.0);
+        System.out.println(1.0 / 1);
         double agreedPoll = 0.0;
         double countersignRatio = 1.0;
         int countPoll = 0;
         System.out.println(((agreedPoll + 1) / countPoll) >= countersignRatio);
+    }
+
+    @Test
+    public void testFloat() {
+        Float f1 = 1.1f;
+        f1.equals(1.2);
     }
 }
