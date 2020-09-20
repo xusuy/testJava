@@ -128,8 +128,14 @@ public class RestControllerTest {
         Assert.assertNotNull("account is null!", account);
     }
 
-    @Test
-    public void testWxPushTemplate() {
-
+    public void postFormData(HttpServletRequest request) {
+        String url = "http://**.com/api/cas/authenticate";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        MultiValueMap map = new LinkedMultiValueMap();
+        map.add("page", 1);
+        map.add("size", 10);
+        HttpEntity requestBody = new HttpEntity(map, headers);
+        restTemplate.postForEntity(url, requestBody, String.class);
     }
 }
