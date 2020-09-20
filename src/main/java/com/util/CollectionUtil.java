@@ -174,13 +174,13 @@ public class CollectionUtil {
     //Map测试
     @Test
     public void testMap() {
-        //HashMap的get()使用key的equals方法取出相应map,重写key的equals方法即可取出map中对应value
+        //HashMap的get()使用key的equals方法取出相应value,重写key的equals方法即可取出key中对应value
         Map<StudentComparable, Integer> hashMap = new HashMap<>();
         assemblyMap(hashMap);
         System.out.println(hashMap.get(new StudentComparable("Michael", 99)));
         System.out.println(hashMap.get(new StudentComparable("Bob", 88)));
         System.out.println(hashMap.get(new StudentComparable("Alice", 77)));
-        //TreeMap的get()使用key的compareTo方法取出相应map,如compareTo相等即可取出map中对应value
+        //TreeMap的get()使用key的compareTo方法取出相应map,如compareTo相等即可取出key中对应value
         TreeMap<StudentComparable, Integer> treeMap = new TreeMap<>();
         assemblyMap(treeMap);
         System.out.println(treeMap.get(new StudentComparable("Michael", 99)));
