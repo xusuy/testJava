@@ -57,7 +57,7 @@ public class StreamsTest2 {
      * 多条件去重：1、利用TreeSet的Comparator构造器方法，构造不重复的条件；2、利用Function的R apply(T t)转换为ArrayList;
      * 3、使用Collectors.collectingAndThen完成最终转换
      *
-     * @param list
+     * @param
      */
     public static void multiConditionDistinctOrder() {
         ArrayList<User> userList = list.stream().collect(Collectors.collectingAndThen(
@@ -74,7 +74,7 @@ public class StreamsTest2 {
     /**
      * filter过滤
      *
-     * @param list
+     * @param
      */
     public static void filterAge() {
         list.stream().filter(u -> u.getAge() == 10).forEach(u -> println(u));
@@ -152,7 +152,11 @@ public class StreamsTest2 {
      * map
      */
     public static void map() {
-        list.stream().map(user -> user.getUserId()).forEach(userId -> println(userId));
+        list.stream().map(user -> {
+            user.getUserId();
+            return user;
+        }).forEach(userId -> println(userId));
+        list.stream().map(user -> user.getUserId()).forEach(userId -> println(userId));//上面的简写
         list.stream().mapToInt(User::getAge).forEach(userId -> println(userId));
         list.stream().mapToDouble(User::getUserId).forEach(userId -> println(userId));
         list.stream().mapToLong(User::getUserId).forEach(userId -> println(userId));
