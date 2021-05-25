@@ -1,5 +1,6 @@
 package com.frame.config;
 
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,11 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
         //校验cookies是否存在
         render(response);
         return false;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        super.postHandle(request, response, handler, modelAndView);
     }
 
     private void render(HttpServletResponse response) throws Exception {

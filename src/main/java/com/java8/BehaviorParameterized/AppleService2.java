@@ -47,7 +47,12 @@ public class AppleService2 {
         System.out.println("Apple result by Predicate<T>===" + getFilterApplesByPredicate(sourceApples, apple -> Color.RED.equals(apple.getColor()) && apple.getWeight() > 5));
         //使用原生Predicate<T>解决筛选偶数
         List<Integer> intList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-        System.out.println(getFilterApplesByPredicate(intList, integer -> integer % 2 == 0));
+        System.out.println(getFilterApplesByPredicate(intList, new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer integer) {
+                return integer % 2 == 0;
+            }
+        }));
     }
 
     //测试排序
